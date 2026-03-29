@@ -1,0 +1,114 @@
+"use client";
+
+import { Web3Auth } from "@web3auth/modal";
+import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider";
+import { CHAIN_NAMESPACES, WEB3AUTH_NETWORK } from "@web3auth/base";
+import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { createWalletClient, custom, type WalletClient } from "viem";
+
+const INTEGRA_CHAIN = {
+  chainNamespace: CHAIN_NAMESPACES.EIP155,
+  chainId: "0x666A", // 26218
+  rpcTarget: "https://testnet-rpc.integralayer.com",
+  displayName: "Integra Testnet",
+  blockExplorerUrl: "https://explorer.integralayer.com",
+  ticker: "IRL",
+  tickerName: "Integra Real Life",
+  logo: "https://integralayer.com/logo.png",
+};
+
+interface AuthContext {
+  web3auth: Web3Auth | null;
+  address: string | null;
+  walletClient: WalletClient | null;
+  isConnected: boolean;
+  isLoading: boolean;
+  connect: () => Promise<void>;
+  disconnect: () => Promise<void>;
+}
+
+const AuthCtx = createContext<AuthContext>({
+  web3auth: null,
+  address: null,
+  walletClient: null,
+  isConnected: false,
+  isLoading: true,
+  connect: async () => {},
+  disconnect: async () => {},
+});
+
+export function IntegraAuthProvider({ children }: { children: ReactNode }) {
+  const [web3auth, setWeb3Auth] = useState<Web3Auth | null>(null);
+  const [address, setAddress] = useState<string | null>(null);
+  const [walletClient, setWalletClient] = useState<WalletClient | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const init = async () => {
+      const privateKeyProvider = new EthereumPrivateKeyProvider({
+        config: { chainConfig: INTEGRA_CHAIN },
+      });
+
+      const w3a = new Web3Auth({
+        clientId: process.env.NEXT_PUBLIC_WEB3AUTH_CLIENT_ID!,
+        web3AuthNetwork: WEB3AUTH_NETWORK.SAPPHIRE_DEVNET,
+        privateKeyProvider,
+        uiConfig: {
+          appName: "Integra dApp", // Replace with your dApp name
+          theme: { primary: "#6C5CE7" },
+          mode: "dark",
+        },
+      });
+
+      await w3a.initModal();
+      setWeb3Auth(w3a);
+
+      if (w3a.connected && w3a.provider) {
+        const client = createWalletClient({ transport: custom(w3a.provider) });
+        const [addr] = await client.getAddresses();
+        setAddress(addr);
+        setWalletClient(client);
+      }
+      setIsLoading(false);
+    };
+    init();
+  }, []);
+
+  const connect = async () => {
+    if (!web3auth) return;
+    const provider = await web3auth.connect();
+    if (provider) {
+      const client = createWalletClient({ transport: custom(provider) });
+      const [addr] = await client.getAddresses();
+      setAddress(addr);
+      setWalletClient(client);
+    }
+  };
+
+  const disconnect = async () => {
+    if (!web3auth) return;
+    await web3auth.logout();
+    setAddress(null);
+    setWalletClient(null);
+  };
+
+  return (
+    <AuthCtx.Provider value={{
+      web3auth, address, walletClient,
+      isConnected: !!address, isLoading,
+      connect, disconnect,
+    }}>
+      {children}
+    </AuthCtx.Provider>
+  );
+}
+
+export const useWeb3Auth = () => useContext(AuthCtx);
+export const useAccount = () => {
+  const { address, isConnected } = useContext(AuthCtx);
+  return { address, isConnected };
+};
+export const useSigner = () => {
+  const { walletClient } = useContext(AuthCtx);
+  return walletClient;
+};

@@ -1,0 +1,74 @@
+// Integra Design System — Tailwind Config Extension
+// Add to your tailwind.config.ts
+
+const integraTheme = {
+  extend: {
+    colors: {
+      brand: {
+        DEFAULT: "#6C5CE7",
+        light: "#A29BFE",
+        dark: "#4A3FB5",
+      },
+      gold: {
+        DEFAULT: "#F0B90B",
+        light: "#FCD535",
+      },
+      teal: {
+        DEFAULT: "#00CEC9",
+        dark: "#00A8A3",
+      },
+      integra: {
+        bg: "#0A0A1A",
+        card: "#12122A",
+        "card-hover": "#1A1A3A",
+        section: "#0E0E22",
+        border: "#2A2A4A",
+        "border-light": "#3A3A5A",
+        text: "#E8E8F0",
+        "text-dim": "#8888AA",
+        "text-bright": "#FFFFFF",
+      },
+      success: "#00B894",
+      danger: "#FF6B6B",
+      warning: "#FDCB6E",
+    },
+    fontFamily: {
+      sans: ["Inter", "system-ui", "sans-serif"],
+      mono: ["Space Grotesk", "monospace"],
+    },
+    borderRadius: {
+      card: "16px",
+      button: "10px",
+    },
+    boxShadow: {
+      card: "0 4px 24px rgba(0,0,0,0.4)",
+      brand: "0 4px 24px rgba(108,92,231,0.3)",
+    },
+  },
+};
+
+export default integraTheme;
+
+/*
+Usage in tailwind.config.ts:
+
+import type { Config } from "tailwindcss";
+import integraTheme from "./integra-theme";
+
+export default {
+  content: ["./app/**\/*.{ts,tsx}", "./components/**\/*.{ts,tsx}"],
+  theme: integraTheme,
+  darkMode: "class",
+  plugins: [],
+} satisfies Config;
+
+Common class patterns:
+  Background:    bg-integra-bg
+  Card:          bg-integra-card border border-integra-border rounded-card
+  Text:          text-integra-text
+  Dim text:      text-integra-text-dim
+  Heading:       text-integra-text-bright font-bold
+  Brand button:  bg-brand hover:bg-brand-light text-white rounded-button
+  Gold accent:   text-gold border-gold
+  Teal accent:   text-teal border-teal
+*/
