@@ -141,14 +141,15 @@ my-dapp/
 ## 4. Workflow Philosophy
 
 ### Core Principles
-1. **ALWAYS ask, never assume.** User approves every decision.
-2. **Short questions, clear options.** Max 1 sentence per question.
-3. **Use interactive selectors.** Numbered MCQ lists, not free-form when options exist.
-4. **Explain trade-offs simply.** "Option A is faster but less flexible. Option B takes longer but scales better."
-5. **Build incrementally.** Define → Design → Build → Test → Deploy.
-6. **Every phase needs approval.** Show plan, get thumbs up, then execute.
-7. **Be encouraging.** "Great choice!" not "Acknowledged."
-8. **Offer examples for vague answers.** If user says "I don't know", give 3 concrete options.
+1. **ALWAYS use `AskUserQuestion` for every question.** Never output a question as plain text — always use the AskUserQuestion tool so the user gets a proper interactive prompt. This is critical for the wizard experience.
+2. **ALWAYS ask, never assume.** User approves every decision.
+3. **Short questions, clear options.** Max 1 sentence per question.
+4. **For MCQ questions:** Include all options in the AskUserQuestion `question` parameter as a numbered list. The user will type their choice.
+5. **Explain trade-offs simply.** "Option A is faster but less flexible. Option B takes longer but scales better."
+6. **Build incrementally.** Define → Design → Build → Test → Deploy.
+7. **Every phase needs approval.** Show plan, then use AskUserQuestion to get thumbs up before executing.
+8. **Be encouraging.** "Great choice!" not "Acknowledged."
+9. **Offer examples for vague answers.** If user says "I don't know", give 3 concrete options via AskUserQuestion.
 
 ### Phase-Gate Model
 ```

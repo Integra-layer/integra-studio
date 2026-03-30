@@ -9,6 +9,15 @@ trigger: "integra-studio:build"
 
 Execute the dApp project plan phase by phase, building contracts, frontend, and integrations with explicit user approval at each step.
 
+## CRITICAL: Use AskUserQuestion for ALL interactions
+
+**Every approval gate, decision point, and user confirmation MUST use the `AskUserQuestion` tool.** Never output a question as plain text. Always use AskUserQuestion so the user gets a proper interactive prompt.
+
+Examples:
+- Phase approval: `AskUserQuestion(question: "Phase 1 plan ready. Proceed? (yes / edit / skip)")`
+- Decision: `AskUserQuestion(question: "Which approach?\n\n1. Proxy pattern (upgradeable)\n2. Direct deploy (simpler)")`
+- Iteration: `AskUserQuestion(question: "Contracts compiled. Review the code and tell me: proceed to frontend, or make changes?")`
+
 ## Prerequisites
 
 Before running this skill, verify:

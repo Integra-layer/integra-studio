@@ -9,14 +9,16 @@ trigger: "integra-studio:explore"
 
 Interactive explorer for the Integra ecosystem. Let users discover contracts, APIs, features, and integration patterns.
 
+## CRITICAL: Use AskUserQuestion for ALL interactions
+
+**Every menu, question, and prompt MUST use the `AskUserQuestion` tool.** Never output a question as plain text. Always use AskUserQuestion so the user gets a proper interactive prompt.
+
 ## Activation
 
-When invoked, show the ecosystem menu:
+When invoked, use AskUserQuestion to show the ecosystem menu:
 
 ```
-Integra Ecosystem Explorer
-
-Pick a product to explore, or ask a question:
+AskUserQuestion(question: "Integra Ecosystem Explorer\n\nPick a product to explore, or ask a question:
 
   [1] Asset Passport  — Tokenize and track real-world assets
   [2] Wrapper (IRWA)  — Wrap assets into ERC-20 tokens

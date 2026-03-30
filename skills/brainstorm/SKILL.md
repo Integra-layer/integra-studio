@@ -9,6 +9,15 @@ trigger: "integra-studio:brainstorm"
 
 Free-form brainstorming mode for dApp ideas on the Integra blockchain. Help the user discover what to build.
 
+## CRITICAL: Use AskUserQuestion for ALL interactions
+
+**Every question and prompt MUST use the `AskUserQuestion` tool.** Never output a question as plain text. Always use AskUserQuestion so the user gets a proper interactive prompt.
+
+Examples:
+- Initial: `AskUserQuestion(question: "What area interests you?\n\n1. DeFi\n2. AI Agents\n3. Social\n4. Gaming\n5. NFTs\n6. Infrastructure\n7. Surprise me")`
+- Follow-up: `AskUserQuestion(question: "Any of these spark something? Pick a number, or say 'more' for fresh ideas.")`
+- Transition: `AskUserQuestion(question: "Want to build this? I can run /integra-studio:start with this idea pre-filled. (yes / tweak it / more ideas)")`
+
 ## Activation
 
 When this skill is invoked, enter brainstorming mode. The user either:
