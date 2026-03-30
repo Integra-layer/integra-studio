@@ -574,3 +574,58 @@ Before deployment, verify:
 - [ ] No secrets committed to git history
 - [ ] RPC URLs point to correct network
 - [ ] Contract addresses match deployed contracts
+
+---
+
+## Security Audit Findings & Patterns
+
+Knowledge from actual Integra security audits. Reference these when building or reviewing contracts.
+
+### Audit Reports Location
+
+`/Users/adamboudj/knowledge-bank/01-integra/security/`
+
+| Report | Size | Scope |
+|--------|------|-------|
+| `dashboard-security-findings.md` | 34KB | Dashboard app vulnerabilities |
+| `evm-audit-comprehensive.md` | 25KB | EVM module and contract audit |
+| `aws-platform-audit.md` | 25KB | Infrastructure and cloud security |
+| `dashboard-remediation-plan.md` | 41KB | Remediation tracking and fixes |
+
+### Common Findings (Recurring Patterns)
+
+- **Input validation gaps** — Missing zero-address checks, unbounded array inputs, missing amount bounds
+- **Access control missing on admin functions** — State-changing functions without `onlyOwner` or role-based guards
+- **Reentrancy on token transfers** — External calls before state updates, missing ReentrancyGuard
+
+### Mandatory Before Testnet Deployment
+
+- All contracts must pass security review (use `/integra-studio:review`)
+- Reference the remediation plan (`dashboard-remediation-plan.md`) for fix patterns
+- Apply Checks-Effects-Interactions on every function with external calls
+- Validate all inputs on all public/external functions — no exceptions
+
+---
+
+## Regulatory & Jurisdiction Awareness
+
+### UAE (Integra Home Base)
+
+| Regulator | Scope |
+|-----------|-------|
+| DIFC / DFSA | Financial free zone, securities tokenization framework |
+| VARA | Virtual assets regulation (Dubai) |
+| DLD | Dubai Land Department — free API for real estate data |
+
+### Compliance Requirements
+
+- **ERC-7943 primitives are mandatory** for any contract handling tokens — `isTransferAllowed()`, `isUserAllowed()`, `forceTransfer()`, `setFrozen()`
+- All RWA tokens must enforce compliance at the contract level, not just the frontend
+- Jurisdiction checks must be on-chain or oracle-verified, not client-side only
+
+### Jurisdiction Research
+
+Comprehensive real estate jurisdiction analysis (72KB):
+`/Users/adamboudj/knowledge-bank/01-integra/products/asset-passport/real-estate-jurisdictions.md`
+
+Covers regulatory frameworks for tokenized real estate across multiple jurisdictions relevant to Integra's asset passport product.

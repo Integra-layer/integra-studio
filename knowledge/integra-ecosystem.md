@@ -771,6 +771,86 @@ When actual testnet contracts are deployed by the Integra team, update these add
 
 ---
 
+## ERC-7943 Compliance Standard
+
+Universal RWA compliance interface, currently at Last Call status.
+
+### Primitives
+
+| Function | Purpose |
+|----------|---------|
+| `isTransferAllowed()` | Check if a transfer is permitted under compliance rules |
+| `isUserAllowed()` | Verify user eligibility (KYC/AML/jurisdiction) |
+| `forceTransfer()` | Regulator-initiated forced transfer (freeze recovery, court order) |
+| `setFrozen()` | Freeze/unfreeze an account or token |
+
+- Co-designed with MetaMask, Google, Coinbase
+- Integra is an ERC-3643 T-REX association member
+- IRWA wrapper preserves all compliance rules from the source token — wrapping does not bypass compliance
+
+---
+
+## Agent Passport Protocol (ERC-8004 + ERC-6551)
+
+On-chain identity and trust layer for AI agents.
+
+- Every AI agent gets on-chain identity via ERC-8004 registry
+- Token-bound account (ERC-6551) gives each agent its own wallet
+- Agents stake IRL tokens for trust/reputation
+- Slashing mechanism for poor performance (failed tasks, malicious behavior)
+- Non-transferable reputation tokens — reputation cannot be bought or sold
+
+---
+
+## Gasless Operations
+
+Built into Cosmos SDK, no relay server needed.
+
+| Module | Purpose |
+|--------|---------|
+| `x/feegrant` | Grant gas allowances to other accounts (sponsor user tx fees) |
+| `x/authz` | Authorize agents to execute transactions on behalf of the owner |
+
+- Combined with AgentAuth for full agent delegation: owner authorizes agent via authz, agent pays no gas via feegrant
+- No external relay infrastructure required — native chain-level support
+
+---
+
+## Cross-Chain (IBC)
+
+- **Interchain Accounts:** Agent staked on Integra can execute on other Cosmos chains
+- **IBC Transfers:** Token portability across IBC-connected chains
+- **Single Registration, Multi-Chain Operations:** Register once on Integra, operate everywhere
+
+---
+
+## IRWA Token Bridge Architecture
+
+Lock-and-mint bridge for cross-chain RWA portability.
+
+| Component | Role |
+|-----------|------|
+| Lock Vault | Non-upgradeable escrow for original tokens |
+| Wrapper Factory | Deploys per-token IRWA contracts on destination chain |
+| Oracle MVP | Polls original contract, syncs compliance state cross-chain |
+| Bridge | Lock-and-mint mechanism for cross-chain portability |
+
+**Fail-closed design:** If oracle is stale for > N blocks, all transfers are blocked until oracle catches up. Safety over liveness.
+
+---
+
+## Known Addresses & References
+
+| Resource | Location |
+|----------|----------|
+| Knowledge bank | `/Users/adamboudj/knowledge-bank/01-integra/` |
+| Strategy repo | `/Users/adamboudj/projects/integra-ai-strategy/` |
+| Research campaigns | `integra-ai-strategy/research/` (13 campaigns) |
+| Official docs export | `/Users/adamboudj/knowledge-bank/01-integra/docs-export/` |
+| Whitepaper | `/Users/adamboudj/knowledge-bank/01-integra/company/integralayer-whitepaper.md` |
+
+---
+
 ## Web3Auth Configuration
 
 ```typescript

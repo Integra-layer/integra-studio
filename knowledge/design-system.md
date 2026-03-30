@@ -492,3 +492,44 @@ Mobile-first approach:
 - Stat cards stack from 4-column to 2-column at `md`, 1-column at `sm`
 - Tables become card lists on mobile
 - Modals become full-screen sheets on mobile
+
+---
+
+## Neon Noir Brand Identity Research
+
+Deep brand research backing the Integra design system decisions.
+
+### Research Location
+
+`/Users/adamboudj/knowledge-bank/08-research/brand-design-system/` (10 files, 357KB)
+
+Key documents:
+- `BRAND-DESIGN-SYSTEM.md` (53KB) — full system spec
+- `COLOR-PSYCHOLOGY.md` (31KB) — color perception and emotional mapping
+- `TYPOGRAPHY-PSYCHOLOGY.md` (27KB) — font psychology and trust signals
+
+### Color Psychology Mapping
+
+| Color | Psychological Effect | Integra Usage |
+|-------|---------------------|---------------|
+| Purple (`#6C5CE7` / `#8B5CF6`) | Authority, innovation, premium | Primary brand, XP/rewards |
+| Gold (`#F0B90B`) | Premium, achievement, trust | Highlights, important metrics |
+| Teal (`#00CEC9` / `#06B6D4`) | Trust, technology, calm | Success states, info highlights |
+
+### 70/20/10 Color Distribution Rule
+
+- **70%** — Dark background (`#09090B` / `#0A0A1A`)
+- **20%** — Brand purple for UI elements, accents, interactive states
+- **10%** — Gold and teal for highlights, success indicators, emphasis
+
+### Animation Principles
+
+- Subtle transitions only: 200-300ms duration
+- No flashy effects, no bouncing, no parallax
+- Purposeful motion: every animation must communicate state change or guide attention
+- Matches the design system's existing animation guidelines above
+
+### Typography Psychology
+
+- **Inter** — Projects authority and trust; clean geometric forms read as professional and reliable
+- **Space Grotesk** — Technical credibility; monospaced feel signals engineering precision without sacrificing readability
