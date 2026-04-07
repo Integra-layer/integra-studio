@@ -9,6 +9,10 @@ trigger: "integra-studio:review"
 
 Comprehensive code review of an Integra dApp project. Checks security, quality, ecosystem compliance, test coverage, and documentation.
 
+## CRITICAL: Use AskUserQuestion for ALL interactions
+
+**Every question, confirmation, and decision point MUST use the `AskUserQuestion` tool.** Never output a question as plain text. Always use AskUserQuestion so the user gets a proper interactive prompt.
+
 ## Activation
 
 When invoked, read the full project to understand scope, then delegate to the **reviewer** agent for analysis.
@@ -162,7 +166,8 @@ Recommendations:
 ## Post-Review
 
 After showing the report:
-1. Ask if the user wants to fix any findings now
+1. Use AskUserQuestion: "Want to fix any of these findings now? (yes — fix criticals first / yes — fix all / no — I'll handle it)"
 2. If yes, prioritize critical findings and delegate fixes to the executor agent
 3. After fixes, re-run the affected checks to verify
-4. Offer to run `/integra-studio:deploy` if all critical findings are resolved
+4. **Run refinement loop** — Use AskUserQuestion: "Before we wrap up the review — anything else you'd like me to check, clarify, or dig deeper into?" If yes, investigate and report. Repeat until satisfied.
+5. Offer to run `/integra-studio:deploy` if all critical findings are resolved

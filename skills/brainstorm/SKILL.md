@@ -59,9 +59,25 @@ If they want more → go back to Step 2 with a different angle. Pull from a DIFF
 - Who they want to help
 - What would impress people they respect
 
-### Step 5 — Transition
+### Step 5 — Refinement
 
-When they pick a direction, use AskUserQuestion:
+Before transitioning, use AskUserQuestion:
+
+"Before we lock this in — anything you'd like to add, change, or explore more? Any grey areas I should dig into?"
+
+If yes, ask follow-up questions via AskUserQuestion to cover those gaps, then ask again. Repeat until satisfied.
+
+### Step 6 — Optional Research
+
+Use AskUserQuestion:
+
+"Want me to quickly research existing projects similar to this idea? Could surface patterns, pitfalls, or inspiration. (yes / skip)"
+
+If yes, research and present findings before transitioning.
+
+### Step 7 — Transition
+
+When they're ready, use AskUserQuestion:
 
 "Want me to design this? I'll ask a few more questions and then scaffold the whole project. (yes / keep exploring)"
 

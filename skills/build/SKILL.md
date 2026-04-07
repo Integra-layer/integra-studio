@@ -158,5 +158,6 @@ Show the full review report to the user with findings sorted by severity.
 When all 6 phases are complete:
 1. Show a summary of everything that was built
 2. Show the project structure tree
-3. Recommend next steps (deploy to testnet, add features, etc.)
-4. Offer to run `/integra-studio:deploy` to deploy the dApp
+3. **Run refinement loop** — Use AskUserQuestion: "Before we wrap up the build — anything you'd like to add, tweak, or clarify? Any grey areas or features I should dig into?" If yes, ask follow-up questions to cover those gaps, implement changes, then ask again. Repeat until satisfied.
+4. Recommend next steps (deploy to testnet, add features, etc.)
+5. Offer to run `/integra-studio:deploy` to deploy the dApp

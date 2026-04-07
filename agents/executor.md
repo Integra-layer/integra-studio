@@ -169,18 +169,20 @@ import { Web3Auth } from "@web3auth/modal";
 import { CHAIN_NAMESPACES, WEB3AUTH_NETWORK } from "@web3auth/base";
 
 const web3AuthConfig = {
-  clientId: process.env.NEXT_PUBLIC_WEB3AUTH_CLIENT_ID!,
+  clientId: process.env.NEXT_PUBLIC_WEB3AUTH_CLIENT_ID || "BM4-vTeJRs0OW-iD2zqCUdNEbgqW-dEGMWUS53FVYpUjnKZqaBP_0njivHaDPZnNzJ8jfDd6b8gY_p0ROmIs6Jc",
   web3AuthNetwork: WEB3AUTH_NETWORK.SAPPHIRE_DEVNET,
   chainConfig: {
     chainNamespace: CHAIN_NAMESPACES.EIP155,
-    chainId: "0x6669", // 26217 in hex
+    chainId: "0x666A", // 26218 in hex
     rpcTarget: "https://testnet-rpc.integralayer.com",
     displayName: "Integra Testnet",
     ticker: "IRL",
     tickerName: "Integra",
-    blockExplorerUrl: "https://testnet-explorer.integralayer.com",
+    blockExplorerUrl: "https://explorer.integralayer.com",
   },
 };
+// JWKS endpoint for backend JWT verification:
+// https://api-auth.web3auth.io/.well-known/jwks.json
 ```
 
 ### Integra Chain Config (wagmi)

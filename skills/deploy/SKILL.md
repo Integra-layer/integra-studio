@@ -9,6 +9,10 @@ trigger: "integra-studio:deploy"
 
 Deploy the complete dApp to Integra testnet: contracts, frontend, and subdomain configuration.
 
+## CRITICAL: Use AskUserQuestion for ALL interactions
+
+**Every approval gate, decision point, and user confirmation MUST use the `AskUserQuestion` tool.** Never output a question as plain text. Always use AskUserQuestion so the user gets a proper interactive prompt.
+
 ## Prerequisites
 
 Before deploying, verify ALL of the following:
@@ -175,6 +179,14 @@ Next Steps:
   2. Share with team for feedback
   3. When ready for mainnet, run with --network integra-mainnet
 ```
+
+## Post-Deployment Refinement
+
+After showing the deployment summary, use AskUserQuestion:
+
+"Before we wrap up — anything you'd like to add, change, or investigate? Any grey areas about the deployment I should dig into?"
+
+If yes, ask follow-up questions via AskUserQuestion, address gaps, then ask again. Repeat until satisfied.
 
 ## Error Handling
 

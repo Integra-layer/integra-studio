@@ -104,7 +104,7 @@ NEXT_PUBLIC_CONTRACT_B_ADDRESS=0x5678...
 NEXT_PUBLIC_CHAIN_ID=26217
 NEXT_PUBLIC_RPC_URL=https://testnet-rpc.integralayer.com
 NEXT_PUBLIC_EXPLORER_URL=https://testnet-explorer.integralayer.com
-NEXT_PUBLIC_WEB3AUTH_CLIENT_ID=your_client_id_here
+NEXT_PUBLIC_WEB3AUTH_CLIENT_ID=BM4-vTeJRs0OW-iD2zqCUdNEbgqW-dEGMWUS53FVYpUjnKZqaBP_0njivHaDPZnNzJ8jfDd6b8gY_p0ROmIs6Jc
 
 # .env.example (placeholder values — committed)
 NEXT_PUBLIC_CONTRACT_A_ADDRESS=0x...

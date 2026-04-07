@@ -160,7 +160,35 @@ Create the project structure:
 
 The PRD MUST reference the person's unique context — their background, the problem they identified, why this solution matters to them specifically. It should read like it was written FOR one person, not for a category.
 
-### Step 3 — Done
+### Step 3 — Refinement Loop
+
+Before finalizing, use AskUserQuestion:
+
+"Before we wrap up — anything you'd like to add, clarify, or change? Any grey areas I should dig into?"
+
+If the user says yes:
+- Ask targeted follow-up questions via AskUserQuestion to cover those gaps
+- Update the relevant docs with the new information
+- Ask again: "Anything else, or are we good?"
+- Repeat until the user confirms they're satisfied
+
+### Step 4 — Optional Research
+
+Use AskUserQuestion:
+
+"Want me to research best practices for your dApp type before you start building? I can investigate contract patterns, security considerations, and similar projects. (yes / skip — I'm ready to build)"
+
+If yes:
+- Launch a research agent to investigate:
+  - Existing open-source contracts similar to the user's idea
+  - Security patterns specific to their contract types
+  - Gas optimization approaches for their use case
+  - Frontend patterns for similar dApps
+- Save findings to `docs/RESEARCH.md`
+- Show a summary of key findings and recommendations
+- Use AskUserQuestion: "Based on this research, want to adjust anything in the blueprint? (yes / no, looks good)"
+
+### Step 5 — Done
 
 ```
 Project created at {path}

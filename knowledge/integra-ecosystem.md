@@ -874,13 +874,16 @@ const privateKeyProvider = new EthereumPrivateKeyProvider({
 });
 
 export const web3auth = new Web3Auth({
-  clientId: process.env.NEXT_PUBLIC_WEB3AUTH_CLIENT_ID!,
+  clientId: process.env.NEXT_PUBLIC_WEB3AUTH_CLIENT_ID || "BM4-vTeJRs0OW-iD2zqCUdNEbgqW-dEGMWUS53FVYpUjnKZqaBP_0njivHaDPZnNzJ8jfDd6b8gY_p0ROmIs6Jc",
   web3AuthNetwork: WEB3AUTH_NETWORK.SAPPHIRE_DEVNET, // Use SAPPHIRE_MAINNET for production
   privateKeyProvider,
   uiConfig: {
-    appName: "Your dApp Name",
+    appName: "Integra",
     mode: "dark",
     loginMethodsOrder: ["google", "twitter", "discord", "github"],
   },
 });
+
+// JWKS endpoint for backend JWT verification:
+// https://api-auth.web3auth.io/.well-known/jwks.json
 ```
