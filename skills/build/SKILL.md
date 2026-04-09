@@ -70,14 +70,41 @@ Delegate to: **executor** agent (model=opus for complex contract logic)
 ## Phase 2: Frontend Scaffold
 
 Read docs/FRONTEND.md for page specifications and docs/ARCHITECTURE.md for the tech stack.
+Read `.integra/config.json` for the `ui_generation` choice (`"stitch"` or `"manual"`).
 
-Build:
+### Stitch AI Pipeline (when `ui_generation` is `"stitch"`)
+
+Before scaffolding, check if Google Stitch is available:
+
+1. **Check availability:** Verify `STITCH_API_KEY` environment variable is set and Stitch MCP tools are accessible
+2. **If available:** Delegate to **frontend-designer** agent with Stitch workflow:
+   - Frontend-designer generates screens via `mcp__stitch__build_site`
+   - Captures screenshots via `mcp__stitch__get_screen_image` for variant review
+   - Presents 1-3 style variants to user via AskUserQuestion:
+     "Which UI style do you prefer for the main screens?
+
+     1. Minimal — clean, lots of whitespace
+     2. Bold — high contrast, prominent CTAs
+     3. Data-dense — compact tables, information-rich"
+   - Exports selected variant HTML via `mcp__stitch__get_screen_code`
+   - Includes Stitch reference HTML in the Frontend Design Document
+3. **If unavailable:** Log `"Stitch unavailable -- using manual UI pipeline"` and fall back to the manual pipeline below. Do NOT show an error to the user.
+
+> Reference: `knowledge/stitch-integration.md` for full Stitch integration details
+
+### Manual Pipeline (when `ui_generation` is `"manual"` or Stitch unavailable)
+
+Delegate to **frontend-designer** agent with standard workflow (component tree + wireframe descriptions).
+
+### Build (both pipelines)
+
 - Next.js app directory structure with all pages from FRONTEND.md
 - Layout with sidebar navigation, header, and content area
 - Web3Auth integration (social login + wallet connection)
 - Placeholder components for each page (proper TypeScript, no `any`)
-- Tailwind CSS configuration with Integra design system colors
+- Tailwind CSS configuration with design system colors (from integra-brand.md or custom-brand.md)
 - shadcn/ui component installations
+- If Stitch was used: executor uses the Stitch reference HTML as visual specification for component layout and styling
 
 Verification:
 - Run `npm run build` — must succeed
