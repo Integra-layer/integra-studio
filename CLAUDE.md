@@ -5,12 +5,11 @@ You are the **Integra Developer Studio**, an interactive assistant that helps an
 ## 1. Integra Ecosystem
 
 ### Chain
-- **Name:** integra-testnet-1
 - **Type:** EVM-compatible (Cosmos SDK + EVM module)
-- **Chain ID:** 26218 (hex: 0x666A)
-- **RPC:** `https://testnet-rpc.integralayer.com`
-- **Explorer:** `https://explorer.integralayer.com`
-- **Token:** IRL / `airl` (18 decimals) — unlimited on testnet via faucet
+- **Networks:** Mainnet (Chain ID 26217) and Testnet (Chain ID 26218)
+- **Token:** IRL / `airl` (18 decimals on EVM, 6 on Cosmos)
+
+> **Network Configuration:** All chain IDs, RPC URLs, explorer URLs, gas prices, and endpoint details are in `knowledge/networks/`. Read `mainnet.md`, `testnet.md`, or `shared.md` as needed. **Never hardcode chain IDs or RPC URLs in agents, templates, or skills.**
 
 ### Core Products (Integra Suite)
 
@@ -25,10 +24,10 @@ You are the **Integra Developer Studio**, an interactive assistant that helps an
 
 | Component | What it does | Details |
 |-----------|-------------|---------|
-| **Web3Auth** | Social login wallet (Google, X, Email) | `@web3auth/modal` + `@web3auth/ethereum-provider`, sapphire_devnet, Client ID: `BM4-vTeJRs0OW-iD2zqCUdNEbgqW-dEGMWUS53FVYpUjnKZqaBP_0njivHaDPZnNzJ8jfDd6b8gY_p0ROmIs6Jc`, JWKS: `https://api-auth.web3auth.io/.well-known/jwks.json` |
+| **Web3Auth** | Social login wallet (Google, X, Email) | `@web3auth/modal` + `@web3auth/ethereum-provider`, sapphire_mainnet (mainnet) or sapphire_devnet (testnet) -- see `knowledge/networks/`, Client ID: `BM4-vTeJRs0OW-iD2zqCUdNEbgqW-dEGMWUS53FVYpUjnKZqaBP_0njivHaDPZnNzJ8jfDd6b8gY_p0ROmIs6Jc`, JWKS: `https://api-auth.web3auth.io/.well-known/jwks.json` |
 | **AgentAuth** | Thin contract for agent permissions | `authorize()`, `revoke()`, `executeAsUser()` |
 | **XP System** | Cross-app gamification, every action earns XP for airdrops | Off-chain indexer + REST API at `xp.integralayer.com` |
-| **Faucet** | Testnet IRL distribution | `faucet.integralayer.com` — 1000 IRL per address per 24h |
+| **Faucet** | Testnet IRL distribution | `faucet.integralayer.com` — 10 IRL + 1,000 tUSDI per request (24h cooldown) |
 | **Domain Router** | Subdomain routing for all dApps | `*.integralayer.com` via Caddy reverse proxy |
 
 ### Contract Addresses
@@ -248,7 +247,7 @@ Every dApp must pass before deployment:
 - [ ] .env.example provided, .env in .gitignore
 - [ ] Contract verified on explorer
 - [ ] XP events emit correct points (no inflation bugs)
-- [ ] Web3Auth configured for correct network (sapphire_devnet)
+- [ ] Web3Auth configured for correct network (sapphire_mainnet for mainnet, sapphire_devnet for testnet)
 - [ ] AgentAuth permissions are minimal (least privilege)
 - [ ] Frontend handles all error states (tx failed, network error, insufficient balance)
 
