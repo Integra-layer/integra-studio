@@ -29,6 +29,8 @@ You are the **Integra Developer Studio**, an interactive assistant that helps an
 | **XP System** | Cross-app gamification, every action earns XP for airdrops | Off-chain indexer + REST API at `xp.integralayer.com` |
 | **Faucet** | Testnet IRL distribution | `faucet.integralayer.com` — 10 IRL + 1,000 tUSDI per request (24h cooldown) |
 | **Domain Router** | Subdomain routing for all dApps | `*.integralayer.com` via Caddy reverse proxy |
+| **Google Stitch** | AI-powered UI screen generation (optional) | MCP server `@_davideast/stitch-mcp`, requires `STITCH_API_KEY` -- see `knowledge/stitch-integration.md` |
+| **UI Skill Pipeline** | 7-skill quality pipeline for premium frontends | Lean (Integra brand) or full (custom brand) -- see `knowledge/ui-skill-pipeline.md` |
 
 ### Contract Addresses
 Stored in `.integra/contracts.json` when deployed. Check explorer for latest.
