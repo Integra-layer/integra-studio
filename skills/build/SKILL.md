@@ -136,6 +136,8 @@ Delegate to: **executor** agent
 
 ## Phase 4: UI Polish
 
+> Pipeline reference: `knowledge/ui-skill-pipeline.md`
+
 Read `.integra/config.json` for the branding choice. Based on the `branding` field:
 - If `"integra"`: Read `knowledge/design-systems/integra-brand.md` for official Integra design tokens (Coral #FF6D49, Euclid Circular B). Apply the official palette verbatim.
 - If `"custom"`: Read `knowledge/design-systems/custom-brand.md` for the AI-generated design system. If the file has placeholder sections, invoke the ui-ux-pro-max skill to generate the custom design system first.
@@ -149,20 +151,41 @@ Use AskUserQuestion:
 2. Let me review the design tokens first
 3. Switch to the other branding option"
 
-Build:
-- Apply Integra design system colors, typography, spacing
+### Skill Pipeline Execution
+
+Run the appropriate pipeline based on branding choice:
+
+**Integra branding (lean pipeline):**
+1. Apply `web-design-guidelines` -- verify layout spacing and typography scale
+2. Apply `shadcn-ui` -- ensure all components use shadcn/ui base with Integra theme tokens
+3. Apply `ui-animation` -- add subtle transitions (150-300ms hover, page transitions, list animations)
+4. Apply `taste-skill` -- final polish pass for spacing rhythm, visual hierarchy, content density
+
+**Custom branding (full pipeline):**
+1. Apply `web-design-guidelines` -- verify layout spacing and typography scale
+2. Invoke `ui-ux-pro-max` -- generate unique design system (if custom-brand.md still has placeholders)
+3. Apply `taste-skill` -- ensure custom palette has premium feel (spacing, hierarchy, polish)
+4. Apply `shadcn-ui` -- build components with custom theme tokens from custom-brand.md
+5. Apply `ui-animation` -- add subtle transitions matching the custom design mood
+
+### Build (both pipelines)
+
+- Apply design system colors, typography, spacing from the selected branding source
 - Loading states (skeletons, spinners) for all async operations
 - Error states with user-friendly messages and retry buttons
 - Empty states for lists and tables
 - Toast notifications for transaction success/failure
 - Responsive layout (mobile-first)
-- Dark theme as default (Integra standard)
-- Subtle animations (page transitions, hover effects, list animations)
+- Dark theme as default
+- Subtle animations per ui-animation skill (page transitions, hover effects, list animations)
 
-Verification:
-- Visual review of each page
-- Check responsive behavior at mobile/tablet/desktop breakpoints
-- Confirm dark theme works properly
+### Verification
+
+- Visual review of each page against the design system tokens
+- Check responsive behavior at mobile (375px), tablet (640px), desktop (1024px+)
+- Confirm dark theme works properly with correct surface layering
+- Verify all animations are subtle and purposeful (no flashy effects)
+- Run quality checklist from `knowledge/ui-skill-pipeline.md` Section 6
 - Show before/after comparison if applicable
 
 Delegate to: **executor** agent
