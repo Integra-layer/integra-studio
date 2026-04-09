@@ -32,10 +32,20 @@ If prerequisites are missing, tell the user to run `/integra-studio:start` first
 For EACH phase below, follow this exact sequence:
 
 1. **Show Plan** — Display what will be built in this phase as a numbered list with file paths
-2. **Ask Approval** — Ask the user: "Ready to build Phase N? Any changes before I start?" Wait for confirmation.
+2. **Ask Approval** — Use AskUserQuestion:
+   "Ready to build Phase {N}: {phase name}?
+
+   1. Yes, proceed
+   2. Show me the detailed plan first
+   3. Skip this phase"
 3. **Execute** — Delegate to the executor agent. Build all files for the phase.
 4. **Show Results** — Display what was created, any compilation output, test results
-5. **Ask to Proceed** — Ask: "Phase N complete. Review the output above. Want to proceed to Phase N+1, or iterate on something?"
+5. **Ask to Proceed** — Use AskUserQuestion:
+   "Phase {N} complete. What next?
+
+   1. Proceed to Phase {N+1}
+   2. Make changes to what was built
+   3. Review what was built in detail"
 6. **Iterate if Needed** — If user wants changes, make them and re-show results before moving on
 
 NEVER skip phases. NEVER proceed without user approval.
@@ -99,7 +109,18 @@ Delegate to: **executor** agent
 
 ## Phase 4: UI Polish
 
-Read docs/FRONTEND.md for design specifications. Read knowledge/design-system.md for Integra design tokens.
+Read `.integra/config.json` for the branding choice. Based on the `branding` field:
+- If `"integra"`: Read `knowledge/design-systems/integra-brand.md` for official Integra design tokens (Coral #FF6D49, Euclid Circular B). Apply the official palette verbatim.
+- If `"custom"`: Read `knowledge/design-systems/custom-brand.md` for the AI-generated design system. If the file has placeholder sections, invoke the ui-ux-pro-max skill to generate the custom design system first.
+
+Also read docs/FRONTEND.md for page-level design specifications.
+
+Use AskUserQuestion:
+"Applying {branding choice} design system to your UI. Confirm approach?
+
+1. Yes, apply the design system
+2. Let me review the design tokens first
+3. Switch to the other branding option"
 
 Build:
 - Apply Integra design system colors, typography, spacing

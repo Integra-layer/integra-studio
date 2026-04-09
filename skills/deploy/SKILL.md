@@ -61,6 +61,15 @@ For the wallet check, if we can't verify on-chain, tell the user:
 
 If any check fails, show exactly what's wrong and how to fix it. Don't proceed until all checks pass.
 
+### Network Confirmation
+
+Use AskUserQuestion:
+"Deploying to {network} (Chain ID {chainId}). Confirm?
+
+1. Yes, deploy to {network}
+2. Switch to {other network}
+3. Cancel deployment"
+
 ## Deployment Steps
 
 ### Step 1: Deploy Contracts to Testnet
@@ -122,24 +131,32 @@ Must succeed. If it fails after address updates, there's a configuration issue â
 
 ### Step 5: Deploy Frontend
 
-Offer the user deployment options:
+Use AskUserQuestion:
+"How should we deploy the frontend?
 
-**Option A: Docker (recommended for persistent hosting)**
+1. Docker (recommended for persistent hosting)
+2. Static export (for simple hosting)
+3. Vercel (easiest for demos)
+4. Let me describe a different approach"
+
+Based on the user's choice:
+
+**If 1 (Docker):**
 - Generate a `Dockerfile` and `docker-compose.yml` if they don't exist
 - Build the Docker image
 - Provide instructions for running on a VPS
 
-**Option B: Static Export (for simple hosting)**
+**If 2 (Static Export):**
 - Run `next build` with `output: 'export'` if the app supports it
 - Generate static files in `out/`
 - Provide instructions for hosting on any static host
 
-**Option C: Vercel (easiest)**
+**If 3 (Vercel):**
 - Check if `vercel` CLI is available
 - Run `vercel --prod` if available
 - Otherwise provide manual Vercel deployment instructions
 
-Let the user pick. Default recommendation is Option A for production apps, Option C for demos.
+**If 4 (Custom):** Follow the user's described approach.
 
 ### Step 6: Configure Subdomain
 
