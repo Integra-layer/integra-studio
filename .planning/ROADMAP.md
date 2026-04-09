@@ -57,12 +57,10 @@
 - [ ] design-system.md updated with latest brand assets (Coral primary, Euclid Circular B)
 - [ ] Forbidden fonts/colors lists enforced in knowledge files
 
-**Plans:** 4-5
-- Plan 1: Update start skill — add network selector, branding toggle, UI method selector
-- Plan 2: Update discovery agent — selectable options for category/complexity/features
-- Plan 3: Audit and convert all skills to selectable-only technical questions
-- Plan 4: Implement branding toggle logic — official vs custom design system generation
-- Plan 5: Update design-system.md with latest brand assets + forbidden lists
+**Plans:** 3 plans
+- [ ] 02-01-PLAN.md — Rewrite start wizard (hybrid flow + network/branding/UI selectors) and discovery agent (non-interactive)
+- [ ] 02-02-PLAN.md — Convert build/deploy/brainstorm/review skills to selectable question format
+- [ ] 02-03-PLAN.md — Create two-file branding architecture (integra-brand.md + custom-brand.md)
 
 ---
 
