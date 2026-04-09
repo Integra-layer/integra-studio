@@ -2,59 +2,11 @@
 
 Complete reference for all Integra blockchain products, contract interfaces, APIs, and integration patterns.
 
-## Chain Configuration
+## Network Configuration
 
-| Property | Testnet | Mainnet |
-|----------|---------|---------|
-| Chain Name | Integra Testnet | Integra Mainnet |
-| Chain ID | 26217 | 26217 |
-| Native Token | IRL (airl = smallest unit) | IRL |
-| RPC URL | https://testnet-rpc.integralayer.com | https://rpc.integralayer.com |
-| Explorer | https://testnet-explorer.integralayer.com | https://explorer.integralayer.com |
-| Faucet | https://faucet.integralayer.com | N/A |
-| WebSocket | wss://testnet-ws.integralayer.com | wss://ws.integralayer.com |
+> Network config (chain IDs, RPCs, explorers, gas) is in `knowledge/networks/`. See `mainnet.md`, `testnet.md`, and `shared.md`. Do not duplicate network data here.
 
 **Important:** The token is **IRL** / **airl** (NOT ILR/ailr). This is a common gotcha.
-
-## Network Configuration (Hardhat)
-
-```typescript
-// hardhat.config.ts
-const config: HardhatUserConfig = {
-  networks: {
-    "integra-testnet": {
-      url: process.env.INTEGRA_TESTNET_RPC_URL || "https://testnet-rpc.integralayer.com",
-      chainId: 26217,
-      accounts: process.env.DEPLOYER_PRIVATE_KEY ? [process.env.DEPLOYER_PRIVATE_KEY] : [],
-    },
-    "integra-mainnet": {
-      url: process.env.INTEGRA_MAINNET_RPC_URL || "https://rpc.integralayer.com",
-      chainId: 26217,
-      accounts: process.env.DEPLOYER_PRIVATE_KEY ? [process.env.DEPLOYER_PRIVATE_KEY] : [],
-    },
-  },
-};
-```
-
-## Network Configuration (wagmi/viem)
-
-```typescript
-// src/lib/chains.ts
-import { defineChain } from "viem";
-
-export const integraTestnet = defineChain({
-  id: 26217,
-  name: "Integra Testnet",
-  nativeCurrency: { name: "IRL", symbol: "IRL", decimals: 18 },
-  rpcUrls: {
-    default: { http: ["https://testnet-rpc.integralayer.com"] },
-  },
-  blockExplorers: {
-    default: { name: "Integra Explorer", url: "https://testnet-explorer.integralayer.com" },
-  },
-  testnet: true,
-});
-```
 
 ---
 
@@ -862,7 +814,7 @@ import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider";
 const chainConfig = {
   chainNamespace: CHAIN_NAMESPACES.EIP155,
   chainId: "0x6669", // 26217 in hex
-  rpcTarget: "https://testnet-rpc.integralayer.com",
+  rpcTarget: "<RPC URL from knowledge/networks/ for your target network>",
   displayName: "Integra Testnet",
   blockExplorerUrl: "https://testnet-explorer.integralayer.com",
   ticker: "IRL",

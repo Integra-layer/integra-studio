@@ -178,7 +178,7 @@
 **Integra Features:** XP
 **One-liner:** Enhanced faucet with social login, drip scheduling, balance tracking, and XP rewards for first claim.
 **Why it matters:** Current faucet is basic. A polished faucet is the first thing every testnet user touches.
-**User flow:** Login via Web3Auth → Claim 1000 IRL → See balance → Set up daily auto-drip → Earn XP
+**User flow:** Login via Web3Auth → Claim 10 IRL + 1,000 tUSDI → See balance → Set up daily auto-drip → Earn XP
 
 ### 23. Subdomain Manager
 **Category:** Infrastructure | **Complexity:** Simple | **Build:** 1 day
