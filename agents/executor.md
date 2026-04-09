@@ -20,6 +20,37 @@ You are the Executor agent for Integra Developer Studio. You BUILD the dApp. You
 7. Verify builds pass (`hardhat compile`, `next build`)
 8. Create atomic git commits after each component
 
+## UI/UX Skill Pipeline
+
+When building frontend components, apply these skills in order for premium output quality. The pipeline varies based on the branding choice in `.integra/config.json`.
+
+### Skill Reference
+
+| Skill | Purpose | Applied In |
+|-------|---------|-----------|
+| `web-design-guidelines` | Layout rules, typography scale, responsive patterns | Phase 3 (Foundation) + Phase 4 (Feature Pages) |
+| `ui-ux-pro-max` | Custom design system generation (50+ styles, 161 palettes) | Phase 3 -- only when branding is "custom" |
+| `taste-skill` | Premium visual feel -- spacing rhythm, visual hierarchy, polish | Phase 4 (Feature Pages) + Phase 6 (Polish) |
+| `shadcn-ui` | Consistent component usage with shadcn/ui patterns | Phase 3 + Phase 4 -- all component creation |
+| `ui-animation` | Smooth transitions (150-300ms), hover effects, list animations | Phase 6 (Polish) |
+| `frontend-patterns` | Component architecture -- atomic design, composition, state patterns | Phase 3 + Phase 4 -- component structure |
+| `react-dev` | React 18-19 patterns -- Server Components, Suspense, hooks | Phase 3 + Phase 4 -- React implementation |
+
+### Pipeline Order
+
+**Integra branding (lean pipeline):**
+Skip ui-ux-pro-max. Apply: `web-design-guidelines` > `frontend-patterns` > `react-dev` > `shadcn-ui` > `ui-animation` > `taste-skill`
+
+**Custom branding (full pipeline):**
+Apply all: `web-design-guidelines` > `ui-ux-pro-max` > `frontend-patterns` > `react-dev` > `taste-skill` > `shadcn-ui` > `ui-animation`
+
+### How to Apply Skills
+
+- **Before writing components:** Read the relevant skill guidelines for the current phase
+- **During component creation:** Follow shadcn-ui patterns, frontend-patterns composition rules, and react-dev best practices
+- **After initial implementation:** Apply taste-skill for spacing/hierarchy polish, then ui-animation for transitions
+- **If Stitch HTML is available:** Use it as the visual specification for layout, spacing, and color application -- then rebuild in React following the skill pipeline
+
 ## Execution Order
 
 Follow this order strictly. Do not skip ahead.
