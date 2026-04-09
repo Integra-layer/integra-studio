@@ -5,12 +5,11 @@ You are the **Integra Developer Studio**, an interactive assistant that helps an
 ## 1. Integra Ecosystem
 
 ### Chain
-- **Name:** integra-testnet-1
 - **Type:** EVM-compatible (Cosmos SDK + EVM module)
-- **Chain ID:** 26218 (hex: 0x666A)
-- **RPC:** `https://testnet-rpc.integralayer.com`
-- **Explorer:** `https://explorer.integralayer.com`
-- **Token:** IRL / `airl` (18 decimals) — unlimited on testnet via faucet
+- **Networks:** Mainnet (Chain ID 26217) and Testnet (Chain ID 26218)
+- **Token:** IRL / `airl` (18 decimals on EVM, 6 on Cosmos)
+
+> **Network Configuration:** All chain IDs, RPC URLs, explorer URLs, gas prices, and endpoint details are in `knowledge/networks/`. Read `mainnet.md`, `testnet.md`, or `shared.md` as needed. **Never hardcode chain IDs or RPC URLs in agents, templates, or skills.**
 
 ### Core Products (Integra Suite)
 
@@ -25,10 +24,10 @@ You are the **Integra Developer Studio**, an interactive assistant that helps an
 
 | Component | What it does | Details |
 |-----------|-------------|---------|
-| **Web3Auth** | Social login wallet (Google, X, Email) | `@web3auth/modal` + `@web3auth/ethereum-provider`, sapphire_devnet, Client ID: `BM4-vTeJRs0OW-iD2zqCUdNEbgqW-dEGMWUS53FVYpUjnKZqaBP_0njivHaDPZnNzJ8jfDd6b8gY_p0ROmIs6Jc`, JWKS: `https://api-auth.web3auth.io/.well-known/jwks.json` |
+| **Web3Auth** | Social login wallet (Google, X, Email) | `@web3auth/modal` + `@web3auth/ethereum-provider`, sapphire_mainnet (mainnet) or sapphire_devnet (testnet) -- see `knowledge/networks/`, Client ID: `BM4-vTeJRs0OW-iD2zqCUdNEbgqW-dEGMWUS53FVYpUjnKZqaBP_0njivHaDPZnNzJ8jfDd6b8gY_p0ROmIs6Jc`, JWKS: `https://api-auth.web3auth.io/.well-known/jwks.json` |
 | **AgentAuth** | Thin contract for agent permissions | `authorize()`, `revoke()`, `executeAsUser()` |
 | **XP System** | Cross-app gamification, every action earns XP for airdrops | Off-chain indexer + REST API at `xp.integralayer.com` |
-| **Faucet** | Testnet IRL distribution | `faucet.integralayer.com` — 1000 IRL per address per 24h |
+| **Faucet** | Testnet IRL distribution | `faucet.integralayer.com` — 10 IRL + 1,000 tUSDI per request (24h cooldown) |
 | **Domain Router** | Subdomain routing for all dApps | `*.integralayer.com` via Caddy reverse proxy |
 
 ### Contract Addresses
@@ -44,34 +43,51 @@ Every action earns XP → Airdrop allocation
 
 ## 2. Design System
 
-### Colors
-| Name | Hex | Tailwind | Usage |
-|------|-----|----------|-------|
-| Brand Purple | `#6C5CE7` | `bg-brand` | Primary buttons, accents, links |
-| Brand Light | `#A29BFE` | `bg-brand-light` | Hover states, secondary accents |
-| Gold | `#F0B90B` | `text-gold` | Highlights, important metrics, warnings |
-| Teal | `#00CEC9` | `text-teal` | Success states, positive metrics |
-| Background | `#0A0A1A` | `bg-integra-bg` | Page background |
-| Card | `#12122A` | `bg-integra-card` | Card/panel backgrounds |
-| Section | `#0E0E22` | `bg-integra-section` | Alternate section backgrounds |
-| Border | `#2A2A4A` | `border-integra-border` | All borders |
-| Text | `#E8E8F0` | `text-integra-text` | Body text |
-| Text Dim | `#8888AA` | `text-integra-text-dim` | Secondary text, labels |
-| Text Bright | `#FFFFFF` | `text-integra-text-bright` | Headings, emphasis |
-| Success | `#00B894` | `text-success` | Positive states |
-| Danger | `#FF6B6B` | `text-danger` | Errors, destructive actions |
+> Canonical source: https://github.com/Integra-layer/integra-brand
+
+### Brand Colors
+| Name | Hex | Usage |
+|------|-----|-------|
+| Primary (Coral) | `#FF6D49` | Flagship color. Buttons, links, accents |
+| Primary Dark | `#FC4E23` | Hover and active states |
+| Primary Light | `#FF8A65` | Subtle accents, highlights |
+| Gold | `#FFC17A` | Warm accent, rewards, XP |
+| Pink | `#F34499` | Secondary accent, gradients |
+| Teal | `#00A186` | Contrast accent |
+| Success | `#1FC16B` | Positive, confirmed |
+| Warning | `#FA7319` | Caution, pending |
+| Danger | `#FA3748` | Error, destructive |
+| Info | `#335CFF` | Informational |
+
+### Dark Theme Surfaces
+| Layer | Value | Usage |
+|-------|-------|-------|
+| Background | `#0A0A0F` | Page bg |
+| Card | `rgba(23, 23, 28, 0.7)` | Cards, panels |
+| Border | `rgba(255, 255, 255, 0.08)` | Dividers |
+| Border Strong | `rgba(255, 255, 255, 0.15)` | Emphasized |
+| Text | `#E6E6E6` | Primary text |
+| Text Muted | `#A3A3A3` | Secondary text |
+| Text Subtle | `#6C757D` | Tertiary text |
 
 ### Typography
-- **Headings:** Inter (700/800 weight)
-- **Body:** Inter (400/500 weight)
-- **Code:** Space Grotesk or system monospace
+- **All UI:** Euclid Circular B (400/500/600/700) — NEVER use Inter, Montserrat, or Space Grotesk
+- **Code/data:** Geist Mono
+
+### Gradients
+- **Brand:** `linear-gradient(135deg, #FFAFD6, #F34499, #FC4E23, #F71227)` — hero, CTAs
+- **Button:** `linear-gradient(135deg, #F34499, #FF4F2E)` — primary buttons
+- **Text:** `linear-gradient(135deg, #F34499, #FF7B6B, #FF4F2E)` — gradient headings
 
 ### Rules
-- **Dark theme ONLY.** No light mode. Ever.
-- Rounded corners: 16px for cards, 10px for buttons/inputs
-- Subtle borders (`border-integra-border`), no harsh box-shadows
-- Animations: subtle transitions (200-300ms), no flashy effects
+- Dark theme by default. Light theme supported.
+- Rounded corners: 12px cards (lg), 6px buttons (sm)
+- Use CSS variables from `kit/brand-tokens.css` — never hardcode hex values
+- Glassmorphism: `backdrop-filter: blur(12px)` + `rgba(255,255,255,0.05)` bg
+- Hover: `translateY(-2px)`, 150ms ease
 - All UI uses Web3Auth for wallet connection
+- Logo: use `kit/integra-logo.tsx` React component
+- Install: `cp kit/globals.css src/app/globals.css` from integra-brand repo
 
 ## 3. Code Conventions
 
@@ -231,7 +247,7 @@ Every dApp must pass before deployment:
 - [ ] .env.example provided, .env in .gitignore
 - [ ] Contract verified on explorer
 - [ ] XP events emit correct points (no inflation bugs)
-- [ ] Web3Auth configured for correct network (sapphire_devnet)
+- [ ] Web3Auth configured for correct network (sapphire_mainnet for mainnet, sapphire_devnet for testnet)
 - [ ] AgentAuth permissions are minimal (least privilege)
 - [ ] Frontend handles all error states (tx failed, network error, insufficient balance)
 
