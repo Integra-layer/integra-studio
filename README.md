@@ -105,6 +105,7 @@ The wizard doesn't pick for you. It listens, asks follow-ups based on who you ar
 |---------|---------------|
 | `/integra-studio:start` | You want to build something (or figure out what to build) |
 | `/integra-studio:brainstorm` | You just want to explore ideas, no commitment |
+| `/integra-studio:research` | Investigate patterns, security, or pitfalls before building |
 | `/integra-studio:build` | Your project is scaffolded, time to write code |
 | `/integra-studio:explore` | You want to learn about an Integra feature |
 | `/integra-studio:review` | Check your code for security and quality |
