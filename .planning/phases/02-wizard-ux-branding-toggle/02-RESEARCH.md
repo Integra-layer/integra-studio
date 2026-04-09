@@ -429,22 +429,16 @@ This phase is LOW security risk -- it modifies markdown instruction files, not e
 | A3 | Phase 1 will complete before Phase 2 runs (network knowledge files exist) | Pattern 2 | High -- if Phase 1 hasn't created `knowledge/networks/`, network selector references break. Mitigation: Phase 2 can reference existing CLAUDE.md network data as fallback |
 | A4 | `.integra/config.json` is the agreed config propagation mechanism | Code Examples | Medium -- if a different mechanism is chosen in Phase 1, Phase 2 must adapt |
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Phase 1 dependency: Do network knowledge files exist yet?**
-   - What we know: Phase 1 creates `knowledge/networks/mainnet.md` and `testnet.md`. Phase 2 needs to reference these in the network selector.
-   - What's unclear: Does Phase 2 wait for Phase 1 to complete, or should it work with existing CLAUDE.md network data?
-   - Recommendation: Phase 2 should reference `knowledge/networks/` files but include a fallback comment noting that if those files don't exist yet, the wizard should use CLAUDE.md network data temporarily.
+   - RESOLVED: Phase 1 is complete. `knowledge/networks/mainnet.md` and `testnet.md` exist. Plans hardcode chain IDs in wizard question text as backup.
 
 2. **Stitch availability detection**
-   - What we know: WIZ-06 requires a UI generation method selector. Stitch requires `STITCH_API_KEY` and the MCP server.
-   - What's unclear: Should the wizard check for Stitch availability before showing the option, or always show it and handle failure gracefully?
-   - Recommendation: Always show the option but add a note: "Requires Google Stitch setup. We'll check availability during build." This avoids runtime checks during the wizard.
+   - RESOLVED: Wizard always shows the Stitch option. Availability checked during build phase, not wizard. "Decide later" is option 3.
 
 3. **Discovery agent: completely non-interactive or partially interactive?**
-   - What we know: AskUserQuestion fails in subagents. The architecture research recommends making discovery fully non-interactive.
-   - What's unclear: Could the discovery agent be called as a standalone skill (not subagent) in some flows?
-   - Recommendation: Make it fully non-interactive. It's simpler, and the start wizard already collects everything needed.
+   - RESOLVED: Fully non-interactive. Plan 02-01 Task 2 converts discovery agent to a context analyzer with zero AskUserQuestion calls. Start wizard owns all user interaction.
 
 ## Sources
 
