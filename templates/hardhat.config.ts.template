@@ -11,23 +11,38 @@ const config: HardhatUserConfig = {
     },
   },
   networks: {
+    "integra-mainnet": {
+      url: process.env.INTEGRA_MAINNET_RPC_URL || "https://mainnet.integralayer.com/evm",
+      chainId: 26217,
+      gasPrice: 5_000_000_000_000, // 5 Twei minimum gas price
+      accounts: process.env.DEPLOYER_PRIVATE_KEY ? [process.env.DEPLOYER_PRIVATE_KEY] : [],
+    },
     "integra-testnet": {
-      url: process.env.INTEGRA_RPC_URL || "https://testnet-rpc.integralayer.com",
+      url: process.env.INTEGRA_TESTNET_RPC_URL || "https://testnet.integralayer.com/evm",
       chainId: 26218,
       accounts: process.env.DEPLOYER_PRIVATE_KEY ? [process.env.DEPLOYER_PRIVATE_KEY] : [],
     },
   },
   etherscan: {
     apiKey: {
+      "integra-mainnet": "not-needed",
       "integra-testnet": "not-needed",
     },
     customChains: [
       {
+        network: "integra-mainnet",
+        chainId: 26217,
+        urls: {
+          apiURL: "https://blockscout.integralayer.com/api",
+          browserURL: "https://blockscout.integralayer.com",
+        },
+      },
+      {
         network: "integra-testnet",
         chainId: 26218,
         urls: {
-          apiURL: "https://explorer.integralayer.com/api",
-          browserURL: "https://explorer.integralayer.com",
+          apiURL: "https://blockscout.integralayer.com/api",
+          browserURL: "https://blockscout.integralayer.com",
         },
       },
     ],
