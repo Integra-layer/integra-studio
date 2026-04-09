@@ -90,7 +90,7 @@ Check integration with the Integra ecosystem:
 **Required:**
 - Web3Auth integration — social login works, proper chain configuration. Verify chain ID against `knowledge/networks/mainnet.md` (26217) or `knowledge/networks/testnet.md` (26218) based on project target
 - XP event emission — key user actions emit XP events as specified in INTEGRATIONS.md
-- Design system — uses Integra color palette, typography, component patterns (check against knowledge/design-system.md)
+- Design system — uses correct color palette, typography, component patterns (check against knowledge/design-systems/integra-brand.md for Integra branding, or knowledge/design-systems/custom-brand.md for custom branding -- read .integra/config.json to determine which)
 - Contract standards — follows Integra conventions (check against knowledge/conventions.md)
 
 **Recommended:**
@@ -166,7 +166,12 @@ Recommendations:
 ## Post-Review
 
 After showing the report:
-1. Use AskUserQuestion: "Want to fix any of these findings now? (yes — fix criticals first / yes — fix all / no — I'll handle it)"
+1. Use AskUserQuestion:
+   "Want to fix any of these findings now?
+
+   1. Yes, fix critical findings first
+   2. Yes, fix all findings
+   3. No, I'll handle it myself"
 2. If yes, prioritize critical findings and delegate fixes to the executor agent
 3. After fixes, re-run the affected checks to verify
 4. **Run refinement loop** — Use AskUserQuestion: "Before we wrap up the review — anything else you'd like me to check, clarify, or dig deeper into?" If yes, investigate and report. Repeat until satisfied.

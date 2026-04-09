@@ -45,7 +45,11 @@ Now bridge their world to what's possible on Integra. Don't list features — pa
 
 Then use AskUserQuestion:
 
-"Does that angle interest you, or should we explore a different direction?"
+"Does that direction interest you?
+
+1. Yes, let's shape this into a project
+2. Interesting, but show me a different angle
+3. Not quite -- let me describe what I'm thinking"
 
 ### Step 4 — Crystallize or iterate
 
@@ -71,7 +75,10 @@ If yes, ask follow-up questions via AskUserQuestion to cover those gaps, then as
 
 Use AskUserQuestion:
 
-"Want me to quickly research existing projects similar to this idea? Could surface patterns, pitfalls, or inspiration. (yes / skip)"
+"Want me to research existing projects similar to this idea? Could surface patterns and pitfalls.
+
+1. Yes, research before we proceed
+2. Skip -- I'm ready to design"
 
 If yes, research and present findings before transitioning.
 
@@ -79,7 +86,11 @@ If yes, research and present findings before transitioning.
 
 When they're ready, use AskUserQuestion:
 
-"Want me to design this? I'll ask a few more questions and then scaffold the whole project. (yes / keep exploring)"
+"Ready to turn this into a project?
+
+1. Yes, start the design wizard
+2. Keep exploring other angles
+3. Save this idea for later"
 
 If yes → run the start wizard flow with their context carried over. Don't re-ask questions they already answered.
 
