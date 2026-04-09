@@ -6,12 +6,23 @@ import { CHAIN_NAMESPACES, WEB3AUTH_NETWORK } from "@web3auth/base";
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import { createWalletClient, custom, type WalletClient } from "viem";
 
+// Chain ID: 0x6669 (mainnet) or 0x666A (testnet)
+// Determined by NEXT_PUBLIC_NETWORK env var
+const chainId = process.env.NEXT_PUBLIC_NETWORK === "mainnet" ? "0x6669" : "0x666A";
+
+const rpcTarget = process.env.NEXT_PUBLIC_NETWORK === "mainnet"
+  ? (process.env.INTEGRA_MAINNET_RPC_URL || "https://mainnet.integralayer.com/evm")
+  : (process.env.INTEGRA_TESTNET_RPC_URL || "https://testnet.integralayer.com/evm");
+
+// sapphire_mainnet for production, sapphire_devnet for testnet
+const web3authNetwork = process.env.NEXT_PUBLIC_WEB3AUTH_NETWORK || "sapphire_devnet";
+
 const INTEGRA_CHAIN = {
   chainNamespace: CHAIN_NAMESPACES.EIP155,
-  chainId: "0x666A", // 26218
-  rpcTarget: "https://testnet-rpc.integralayer.com",
-  displayName: "Integra Testnet",
-  blockExplorerUrl: "https://explorer.integralayer.com",
+  chainId,
+  rpcTarget,
+  displayName: process.env.NEXT_PUBLIC_NETWORK === "mainnet" ? "Integra Mainnet" : "Integra Testnet",
+  blockExplorerUrl: "https://blockscout.integralayer.com",
   ticker: "IRL",
   tickerName: "Integra Real Life",
   logo: "https://integralayer.com/logo.png",
@@ -51,11 +62,11 @@ export function IntegraAuthProvider({ children }: { children: ReactNode }) {
 
       const w3a = new Web3Auth({
         clientId: process.env.NEXT_PUBLIC_WEB3AUTH_CLIENT_ID!,
-        web3AuthNetwork: WEB3AUTH_NETWORK.SAPPHIRE_DEVNET,
+        web3AuthNetwork: web3authNetwork as typeof WEB3AUTH_NETWORK[keyof typeof WEB3AUTH_NETWORK],
         privateKeyProvider,
         uiConfig: {
           appName: "Integra dApp", // Replace with your dApp name
-          theme: { primary: "#6C5CE7" },
+          theme: { primary: "#FF6D49" }, // Integra Coral brand color
           mode: "dark",
         },
       });
