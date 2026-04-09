@@ -7,11 +7,26 @@ trigger: "integra-studio:deploy"
 
 # Deploy Skill
 
-Deploy the complete dApp to Integra testnet: contracts, frontend, and subdomain configuration.
+Deploy the complete dApp to Integra: contracts, frontend, and subdomain configuration. Supports both mainnet and testnet targets.
 
 ## CRITICAL: Use AskUserQuestion for ALL interactions
 
 **Every approval gate, decision point, and user confirmation MUST use the `AskUserQuestion` tool.** Never output a question as plain text. Always use AskUserQuestion so the user gets a proper interactive prompt.
+
+## Network Target
+
+Read the project's `.integra/config.json` for the target network, or accept a `--network` flag.
+Default: testnet. For mainnet deployment, the skill should:
+- Read `knowledge/networks/mainnet.md` for chain ID (26217), RPC URL, gas price
+- Warn about mainnet gas costs (min 5 Twei per transaction)
+- Use `sapphire_mainnet` for Web3Auth verification
+
+For testnet deployment:
+- Read `knowledge/networks/testnet.md` for chain ID (26218), RPC URL
+- Gas is free on testnet
+- Use `sapphire_devnet` for Web3Auth verification
+
+Read `knowledge/networks/shared.md` for token info (IRL/airl), WIRL address, precompile addresses, and decimal conversion warnings. Never hardcode chain IDs, RPC URLs, or explorer URLs.
 
 ## Prerequisites
 
@@ -20,7 +35,7 @@ Before deploying, verify ALL of the following:
 2. All tests pass (`npx hardhat test` succeeds)
 3. Frontend builds (`npm run build` succeeds)
 4. `.env` file exists with required variables (see Pre-flight Checks below)
-5. The user has testnet IRL in their deployer wallet
+5. The user has sufficient IRL in their deployer wallet (testnet: use faucet; mainnet: real IRL needed)
 
 If any prerequisite fails, stop and help the user fix it before proceeding.
 
@@ -35,14 +50,14 @@ Pre-flight Checklist:
 [x] Frontend builds — no errors
 [x] .env configured:
     [x] DEPLOYER_PRIVATE_KEY set
-    [x] INTEGRA_TESTNET_RPC_URL set (default: https://testnet-rpc.integralayer.com)
+    [x] INTEGRA_RPC_URL set (from knowledge/networks/ for target network)
     [x] NEXT_PUBLIC_WEB3AUTH_CLIENT_ID set
-    [x] NEXT_PUBLIC_CHAIN_ID set (26217)
+    [x] NEXT_PUBLIC_CHAIN_ID set (26217 for mainnet, 26218 for testnet -- see knowledge/networks/)
 [ ] Deployer wallet funded — checking...
 ```
 
 For the wallet check, if we can't verify on-chain, tell the user:
-"Make sure your deployer wallet has at least 1 IRL for gas. Use the faucet at https://faucet.integralayer.com if needed."
+"Make sure your deployer wallet has sufficient IRL for gas. Testnet: use the faucet at https://faucet.integralayer.com (10 IRL + 1,000 tUSDI per request). Mainnet: you need real IRL (min gas price is 5 Twei)."
 
 If any check fails, show exactly what's wrong and how to fix it. Don't proceed until all checks pass.
 
@@ -63,7 +78,7 @@ After deployment:
   ```json
   {
     "network": "integra-testnet",
-    "chainId": 26217,
+    "chainId": "<from knowledge/networks/ target>",
     "deployedAt": "2026-03-30T12:00:00Z",
     "contracts": {
       "ContractName": {
@@ -154,7 +169,7 @@ Display a comprehensive summary:
 ```
 Deployment Complete!
 
-Network: Integra Testnet (Chain ID: 26217)
+Network: Integra <Mainnet|Testnet> (Chain ID: <from knowledge/networks/>)
 Deployed at: 2026-03-30 12:00:00 UTC
 
 Contracts:
@@ -171,13 +186,13 @@ Integrations:
   Faucet: Linked
 
 Explorer Links:
-  ContractName: https://explorer.integralayer.com/address/0x1234...abcd
-  OtherContract: https://explorer.integralayer.com/address/0x5678...efgh
+  ContractName: https://blockscout.integralayer.com/address/0x1234...abcd
+  OtherContract: https://blockscout.integralayer.com/address/0x5678...efgh
 
 Next Steps:
   1. Test the live app at the URL above
   2. Share with team for feedback
-  3. When ready for mainnet, run with --network integra-mainnet
+  3. Switch networks with --network mainnet|testnet (reads from knowledge/networks/)
 ```
 
 ## Post-Deployment Refinement

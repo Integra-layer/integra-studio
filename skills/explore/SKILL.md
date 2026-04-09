@@ -96,8 +96,9 @@ Show:
 - What it is: Testnet token dispenser for development
 - URL: `https://faucet.integralayer.com`
 - API: `POST /api/faucet/drip` with `{ address: "0x..." }`
-- Limits: Amount per request, cooldown period
+- Limits: 10 IRL + 1,000 tUSDI per request, 24h cooldown per address
 - Integration: How to add a "Get Test IRL" button in your dApp
+- Network info: Read `knowledge/networks/testnet.md` for full testnet configuration
 
 ### Domain Router
 Show:

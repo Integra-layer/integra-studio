@@ -94,6 +94,14 @@ Accept both answers in one response. If they skip the name, generate 3 options t
 
 ---
 
+## NETWORK SELECTION (early in wizard)
+
+Early in the wizard, after understanding the person's idea and before synthesis, use AskUserQuestion:
+
+**"Build for mainnet or testnet? Mainnet (Chain ID 26217) is production-ready. Testnet (Chain ID 26218) is free and great for development. (default: mainnet)"**
+
+Use the selection to determine which `knowledge/networks/` file to reference throughout the project setup. Store the choice in the project's `.integra/config.json` as `targetNetwork`.
+
 ## PHASE 2: SYNTHESIS
 
 ### Step 1 — Blueprint
@@ -155,7 +163,7 @@ Create the project structure:
 - `docs/FRONTEND.md` — from frontend designer
 - `docs/INTEGRATIONS.md` — from integration planner
 - `.claude/CLAUDE.md` — project-specific instructions
-- `hardhat.config.ts` — pre-configured for Integra testnet (chain ID 26218)
+- `hardhat.config.ts` — pre-configured for Integra (Chain ID 26217 mainnet or 26218 testnet -- see `knowledge/networks/`)
 - `next.config.ts`, `tailwind.config.ts`, `package.json`
 
 The PRD MUST reference the person's unique context — their background, the problem they identified, why this solution matters to them specifically. It should read like it was written FOR one person, not for a category.

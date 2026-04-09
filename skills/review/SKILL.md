@@ -88,7 +88,7 @@ For all TypeScript/React code, check:
 Check integration with the Integra ecosystem:
 
 **Required:**
-- Web3Auth integration — social login works, proper chain configuration (Chain ID 26217)
+- Web3Auth integration — social login works, proper chain configuration. Verify chain ID against `knowledge/networks/mainnet.md` (26217) or `knowledge/networks/testnet.md` (26218) based on project target
 - XP event emission — key user actions emit XP events as specified in INTEGRATIONS.md
 - Design system — uses Integra color palette, typography, component patterns (check against knowledge/design-system.md)
 - Contract standards — follows Integra conventions (check against knowledge/conventions.md)
