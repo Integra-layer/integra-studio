@@ -28,12 +28,11 @@
 - [ ] Old testnet-rpc.integralayer.com URL removed everywhere
 - [ ] Faucet amount corrected to 10 IRL + 1,000 tUSDI per request
 
-**Plans:** 4-5
-- Plan 1: Create knowledge/networks/ files (mainnet.md, testnet.md, shared.md)
-- Plan 2: Refactor CLAUDE.md files — extract network data, add network knowledge pointers
-- Plan 3: Update all templates for dual-network support
-- Plan 4: Update all 8 agents to reference knowledge/networks/
-- Plan 5: Update deploy skill for mainnet/testnet target
+**Plans:** 4 plans
+- [ ] 01-01-PLAN.md — Create knowledge/networks/ files (mainnet.md, testnet.md, shared.md)
+- [ ] 01-02-PLAN.md — Refactor CLAUDE.md files and integra-ecosystem.md (strip network data, fix design system)
+- [ ] 01-03-PLAN.md — Update all templates for dual-network support
+- [ ] 01-04-PLAN.md — Update all agents and skills to reference knowledge/networks/
 
 ---
 
@@ -144,7 +143,7 @@
 
 | Phase | Name | Requirements | Plans | Depends On |
 |-------|------|-------------|-------|------------|
-| 1 | Network Config & Knowledge Refactor | NET-01..14, CONFIG-01..10 | 4-5 | -- |
+| 1 | Network Config & Knowledge Refactor | NET-01..14, CONFIG-01..10 | 4 | -- |
 | 2 | Wizard UX & Branding Toggle | WIZ-01..08, BRAND-01..06 | 4-5 | Phase 1 |
 | 3 | Google Stitch Integration | STITCH-01..07 | 3-4 | Phase 2 |
 | 4 | UI/UX Skill Pipeline | UISKILL-01..07 | 3 | Phase 2, 3 |
@@ -154,4 +153,4 @@
 
 ---
 *Roadmap created: 2026-04-09*
-*Last updated: 2026-04-09 after requirements definition*
+*Last updated: 2026-04-09 after Phase 1 planning*
