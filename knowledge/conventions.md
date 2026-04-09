@@ -480,7 +480,7 @@ NEXT_PUBLIC_EXPLORER_URL=https://testnet-explorer.integralayer.com
 
 # Server-only (never exposed to browser): no prefix
 DEPLOYER_PRIVATE_KEY=...
-INTEGRA_TESTNET_RPC_URL=https://testnet-rpc.integralayer.com
+INTEGRA_TESTNET_RPC_URL=https://testnet.integralayer.com/evm
 INTEGRA_MAINNET_RPC_URL=https://rpc.integralayer.com
 ```
 
@@ -504,7 +504,7 @@ Always maintain a `.env.example` with all variables and descriptions:
 
 # Deployment (server-only)
 DEPLOYER_PRIVATE_KEY=           # Your deployer wallet private key
-INTEGRA_TESTNET_RPC_URL=https://testnet-rpc.integralayer.com
+INTEGRA_TESTNET_RPC_URL=https://testnet.integralayer.com/evm
 
 # Frontend (exposed to browser)
 NEXT_PUBLIC_WEB3AUTH_CLIENT_ID=BM4-vTeJRs0OW-iD2zqCUdNEbgqW-dEGMWUS53FVYpUjnKZqaBP_0njivHaDPZnNzJ8jfDd6b8gY_p0ROmIs6Jc
