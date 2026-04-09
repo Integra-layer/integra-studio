@@ -69,13 +69,15 @@ You are the Reviewer agent for Integra Developer Studio. You perform a comprehen
 
 ### Integra Design System Compliance
 
-- [ ] **Background**: Page uses `#0a0a0f`, cards use `#12121a`. No light backgrounds.
-- [ ] **Colors**: Primary is `indigo-500`. Accent is `cyan-400`. No off-brand colors.
-- [ ] **Font**: Inter loaded via `next/font/google`. No other fonts.
-- [ ] **Border Radius**: Cards `rounded-xl` (0.75rem). Buttons `rounded-lg` (0.5rem).
-- [ ] **Borders**: Using `border-[#1e1e2e]`. No harsh white or gray borders.
-- [ ] **Shadows**: Minimal shadows. Cards rely on border, not box-shadow.
-- [ ] **Dark Theme**: Entire app is dark. No light mode toggle (not needed for testnet).
+> Reference: `knowledge/design-system.md` and https://github.com/Integra-layer/integra-brand
+
+- [ ] **Background**: Page uses `#0A0A0F`, cards use `rgba(23, 23, 28, 0.7)`. No light backgrounds.
+- [ ] **Colors**: Primary is Coral `#FF6D49`. Gold `#FFC17A` for XP/rewards. No old purple, indigo-500, or off-brand colors.
+- [ ] **Font**: Euclid Circular B (400/500/600/700). NEVER Inter, Montserrat, or Space Grotesk. Code font: Geist Mono.
+- [ ] **Border Radius**: Cards `rounded-xl` (12px). Buttons `rounded-md` (6px).
+- [ ] **Borders**: Using `rgba(255, 255, 255, 0.08)`. No harsh white or gray borders.
+- [ ] **Glassmorphism**: Cards use `backdrop-filter: blur(12px)` + semi-transparent bg.
+- [ ] **Dark Theme**: Dark by default. Light theme supported but not required.
 
 ### Integra Ecosystem Integration
 
@@ -83,7 +85,7 @@ You are the Reviewer agent for Integra Developer Studio. You perform a comprehen
 - [ ] **XP Values**: Points are within recommended ranges? Not exploitable (e.g., no XP for free actions)?
 - [ ] **Passport Check**: If Passport integration selected, gated functions check `hasPassport()`? Frontend shows PassportGate?
 - [ ] **GOB Integration**: If used, proper approval flow? Correct decimal handling (18 decimals)?
-- [ ] **Chain Config**: wagmi configured with chain ID `26217`? RPC URL correct? Explorer URL correct?
+- [ ] **Chain Config**: Verify chain ID, RPC URL, and explorer URL against `knowledge/networks/mainnet.md` (26217) or `knowledge/networks/testnet.md` (26218) based on project target. Never accept hardcoded values without checking knowledge files.
 - [ ] **Web3Auth**: Properly initialized with Integra chain config? Client ID from env var?
 - [ ] **Contract Addresses**: All addresses from environment variables, not hardcoded? `.env.example` has all needed vars?
 

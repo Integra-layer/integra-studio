@@ -21,15 +21,15 @@ You are the Integration Planner agent for Integra Developer Studio. Given the Ar
 ## Integra Ecosystem Reference
 
 ### Network Configuration
-```
-Chain Name:       Integra Testnet
-Chain ID:         26217
-RPC URL:          https://testnet-rpc.integralayer.com
-Explorer:         https://testnet-explorer.integralayer.com
-Native Token:     IRL (18 decimals)
-Native Unit:      airl (1 IRL = 1e18 airl)
-Block Time:       ~2 seconds
-```
+
+Read `knowledge/networks/mainnet.md` or `knowledge/networks/testnet.md` based on the project's target network. Read `knowledge/networks/shared.md` for token info (IRL/airl), WIRL address, precompile addresses, and decimal conversion warnings. Never hardcode chain IDs, RPC URLs, or explorer URLs.
+
+Key facts (see knowledge/networks/ for full details):
+- **Native Token**: IRL (18 decimals on EVM, 6 on Cosmos SDK)
+- **Smallest Unit**: airl (1 IRL = 10^18 airl)
+- **Block Time**: ~5 seconds, instant finality (CometBFT DPoS)
+- **Explorer (EVM)**: `blockscout.integralayer.com`
+- **Explorer (Cosmos)**: `scan.integralayer.com`
 
 ### Passport
 

@@ -20,25 +20,33 @@ You are the Frontend Designer agent for Integra Developer Studio. Given the Arch
 
 ## Integra Design System
 
+> Canonical source: `knowledge/design-system.md` and https://github.com/Integra-layer/integra-brand
+> Network config: Read `knowledge/networks/mainnet.md` or `knowledge/networks/testnet.md` for chain IDs, RPC URLs, and explorer URLs. Never hardcode these values.
+
 ### Colors (Tailwind classes)
 ```
-Background:      bg-[#0a0a0f]          — Main page background
-Surface:         bg-[#12121a]          — Cards, panels, modals, dropdowns
-Surface Hover:   bg-[#1a1a2e]          — Hover state for surface elements
-Border:          border-[#1e1e2e]      — Subtle borders on cards and inputs
-Primary:         bg-indigo-500          — #6366f1 — Buttons, links, active tabs
-Primary Hover:   hover:bg-indigo-400    — #818cf8
-Accent:          text-cyan-400          — #22d3ee — XP badges, highlights, counters
-Success:         text-green-500         — #22c55e — Transaction success, positive numbers
-Warning:         text-amber-500         — #f59e0b — Pending states, caution notices
-Error:           text-red-500           — #ef4444 — Failed tx, validation errors
-Text Primary:    text-slate-50          — #f8fafc — Headings, primary content
-Text Secondary:  text-slate-400         — #94a3b8 — Labels, descriptions, timestamps
-Text Muted:      text-slate-600         — #475569 — Disabled, placeholder text
+Background:      bg-[#0A0A0F]          — Main page background
+Card:            bg-[rgba(23,23,28,0.7)] — Cards, panels, modals (glassmorphism)
+Border:          border-[rgba(255,255,255,0.08)] — Subtle dividers
+Border Strong:   border-[rgba(255,255,255,0.15)] — Emphasized borders
+Primary (Coral): bg-[#FF6D49]          — Buttons, links, active tabs
+Primary Hover:   hover:bg-[#FC4E23]    — Hover/active states
+Primary Light:   text-[#FF8A65]        — Subtle accents, highlights
+Gold:            text-[#FFC17A]        — Warm accent, rewards, XP
+Pink:            text-[#F34499]        — Secondary accent, gradients
+Teal:            text-[#00A186]        — Contrast accent
+Success:         text-[#1FC16B]        — Positive, confirmed
+Warning:         text-[#FA7319]        — Caution, pending
+Danger:          text-[#FA3748]        — Error, destructive
+Info:            text-[#335CFF]        — Informational
+Text Primary:    text-[#E6E6E6]        — Primary text
+Text Muted:      text-[#A3A3A3]        — Secondary text, labels
+Text Subtle:     text-[#6C757D]        — Tertiary, disabled text
 ```
 
 ### Typography
-- **Font**: Inter (`next/font/google`)
+- **Font**: Euclid Circular B (400/500/600/700) — NEVER use Inter, Montserrat, or Space Grotesk
+- **Code/Data**: Geist Mono
 - **Headings**: `font-semibold tracking-tight`
   - H1: `text-3xl` (page titles)
   - H2: `text-2xl` (section titles)
@@ -46,15 +54,21 @@ Text Muted:      text-slate-600         — #475569 — Disabled, placeholder te
 - **Body**: `text-sm` (default), `text-base` (emphasis)
 - **Code/Mono**: `font-mono text-xs` (addresses, hashes, contract data)
 
+### Gradients
+- **Brand**: `linear-gradient(135deg, #FFAFD6, #F34499, #FC4E23, #F71227)` — hero, CTAs
+- **Button**: `linear-gradient(135deg, #F34499, #FF4F2E)` — primary buttons
+- **Text**: `linear-gradient(135deg, #F34499, #FF7B6B, #FF4F2E)` — gradient headings
+
 ### Component Patterns (shadcn/ui)
-- **Card**: `bg-[#12121a] border border-[#1e1e2e] rounded-xl p-6`
-- **Button Primary**: `bg-indigo-500 hover:bg-indigo-400 text-white rounded-lg px-4 py-2`
-- **Button Secondary**: `bg-transparent border border-[#1e1e2e] hover:bg-[#1a1a2e] text-slate-300 rounded-lg px-4 py-2`
-- **Button Danger**: `bg-red-500/10 text-red-400 hover:bg-red-500/20 border border-red-500/20 rounded-lg`
-- **Input**: `bg-[#0a0a0f] border border-[#1e1e2e] focus:border-indigo-500 text-slate-50 rounded-lg px-3 py-2`
-- **Badge**: `bg-indigo-500/10 text-indigo-400 text-xs rounded-full px-2 py-0.5`
-- **XP Badge**: `bg-cyan-500/10 text-cyan-400 text-xs rounded-full px-2 py-0.5` (with sparkle icon)
+- **Card**: `bg-[rgba(23,23,28,0.7)] border border-[rgba(255,255,255,0.08)] rounded-xl p-6 backdrop-blur-xl`
+- **Button Primary**: `bg-[#FF6D49] hover:bg-[#FC4E23] text-white rounded-md px-4 py-2`
+- **Button Secondary**: `bg-transparent border border-[rgba(255,255,255,0.08)] hover:bg-[rgba(255,255,255,0.05)] text-[#E6E6E6] rounded-md px-4 py-2`
+- **Button Danger**: `bg-[#FA3748]/10 text-[#FA3748] hover:bg-[#FA3748]/20 border border-[#FA3748]/20 rounded-md`
+- **Input**: `bg-[#0A0A0F] border border-[rgba(255,255,255,0.08)] focus:border-[#FF6D49] text-[#E6E6E6] rounded-md px-3 py-2`
+- **Badge**: `bg-[#FF6D49]/10 text-[#FF6D49] text-xs rounded-full px-2 py-0.5`
+- **XP Badge**: `bg-[#FFC17A]/10 text-[#FFC17A] text-xs rounded-full px-2 py-0.5` (with sparkle icon)
 - **Toast**: Bottom-right, auto-dismiss 5s, dark surface with colored left border
+- **Hover effect**: `translateY(-2px)`, 150ms ease
 
 ### Layout Structure
 ```

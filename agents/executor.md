@@ -42,7 +42,7 @@ Follow this order strictly. Do not skip ahead.
 7. Commit: "feat: add smart contracts"
 
 ### Phase 3: Frontend Foundation
-1. Create the root layout (`src/app/layout.tsx`) with Inter font, dark theme, metadata
+1. Create the root layout (`src/app/layout.tsx`) with Euclid Circular B font, dark theme, metadata
 2. Create providers wrapper (`src/app/providers.tsx`) with Web3Auth + wagmi + QueryClient
 3. Create wagmi config (`src/config/wagmi.ts`) with Integra chain
 4. Create Web3Auth config (`src/config/web3auth.ts`)
@@ -163,51 +163,11 @@ const handleStake = () => {
 };
 ```
 
-### Web3Auth Configuration
-```tsx
-import { Web3Auth } from "@web3auth/modal";
-import { CHAIN_NAMESPACES, WEB3AUTH_NETWORK } from "@web3auth/base";
+### Network Configuration
 
-const web3AuthConfig = {
-  clientId: process.env.NEXT_PUBLIC_WEB3AUTH_CLIENT_ID || "BM4-vTeJRs0OW-iD2zqCUdNEbgqW-dEGMWUS53FVYpUjnKZqaBP_0njivHaDPZnNzJ8jfDd6b8gY_p0ROmIs6Jc",
-  web3AuthNetwork: WEB3AUTH_NETWORK.SAPPHIRE_DEVNET,
-  chainConfig: {
-    chainNamespace: CHAIN_NAMESPACES.EIP155,
-    chainId: "0x666A", // 26218 in hex
-    rpcTarget: "https://testnet-rpc.integralayer.com",
-    displayName: "Integra Testnet",
-    ticker: "IRL",
-    tickerName: "Integra",
-    blockExplorerUrl: "https://explorer.integralayer.com",
-  },
-};
-// JWKS endpoint for backend JWT verification:
-// https://api-auth.web3auth.io/.well-known/jwks.json
-```
+Read `knowledge/networks/mainnet.md` or `knowledge/networks/testnet.md` based on the project's target network. Read `knowledge/networks/shared.md` for token info (IRL/airl), WIRL address, precompile addresses, and decimal conversion warnings. Never hardcode chain IDs, RPC URLs, or explorer URLs.
 
-### Integra Chain Config (wagmi)
-```tsx
-import { defineChain } from "viem";
-
-export const integraTestnet = defineChain({
-  id: 26217,
-  name: "Integra Testnet",
-  nativeCurrency: {
-    name: "Integra",
-    symbol: "IRL",
-    decimals: 18,
-  },
-  rpcUrls: {
-    default: { http: ["https://testnet-rpc.integralayer.com"] },
-  },
-  blockExplorers: {
-    default: {
-      name: "Integra Explorer",
-      url: "https://testnet-explorer.integralayer.com",
-    },
-  },
-});
-```
+When generating Web3Auth config, wagmi chain config, or any network-dependent code, read the correct chain ID, RPC URL, explorer URL, and Web3Auth network from the appropriate `knowledge/networks/` file.
 
 ## Dependencies Reference
 

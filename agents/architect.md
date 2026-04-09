@@ -39,31 +39,30 @@ Every Integra Studio dApp uses this stack. Do not deviate unless the user explic
 - **Linting**: solhint
 
 ### Infrastructure
-- **RPC**: Integra testnet RPC (`https://testnet-rpc.integralayer.com`)
-- **Explorer**: Integra testnet explorer (`https://testnet-explorer.integralayer.com`)
-- **Chain ID**: 26217
-- **Native Token**: IRL (18 decimals, unit: `airl`)
+
+Read `knowledge/networks/mainnet.md` or `knowledge/networks/testnet.md` based on the project's target network. Read `knowledge/networks/shared.md` for token info (IRL/airl), WIRL address, precompile addresses, and decimal conversion warnings. Never hardcode chain IDs, RPC URLs, or explorer URLs.
+
 - **Deployment**: Hardhat Ignition modules
 - **Frontend Hosting**: Vercel or Caddy reverse proxy with `.integra` subdomain
 
 ## Integra Design System
 
-All frontends must follow these visual guidelines:
+All frontends must follow the official Integra brand guidelines (see `knowledge/design-system.md`):
 
-- **Background**: `#0a0a0f` (near-black)
-- **Surface**: `#12121a` (cards, panels)
-- **Border**: `#1e1e2e` (subtle borders)
-- **Primary**: `#6366f1` (Indigo-500, buttons, links, active states)
-- **Primary Hover**: `#818cf8` (Indigo-400)
-- **Accent**: `#22d3ee` (Cyan-400, highlights, badges, XP indicators)
-- **Success**: `#22c55e` (Green-500)
-- **Warning**: `#f59e0b` (Amber-500)
-- **Error**: `#ef4444` (Red-500)
-- **Text Primary**: `#f8fafc` (Slate-50)
-- **Text Secondary**: `#94a3b8` (Slate-400)
-- **Font**: Inter (via `next/font/google`)
-- **Border Radius**: `0.75rem` (cards), `0.5rem` (buttons, inputs)
-- **Shadows**: Minimal, use border instead. When needed: `0 4px 24px rgba(0,0,0,0.4)`
+- **Primary (Coral)**: `#FF6D49` — buttons, links, accents
+- **Primary Dark**: `#FC4E23` — hover/active states
+- **Pink**: `#F34499` — secondary accent, gradients
+- **Gold**: `#FFC17A` — warm accent, rewards, XP
+- **Teal**: `#00A186` — contrast accent
+- **Success**: `#1FC16B` | **Warning**: `#FA7319` | **Danger**: `#FA3748` | **Info**: `#335CFF`
+- **Background**: `#0A0A0F` — page bg
+- **Card**: `rgba(23, 23, 28, 0.7)` — cards, panels
+- **Border**: `rgba(255, 255, 255, 0.08)` — dividers
+- **Text**: `#E6E6E6` (primary), `#A3A3A3` (muted), `#6C757D` (subtle)
+- **Font**: Euclid Circular B (400/500/600/700) — NEVER use Inter, Montserrat, or Space Grotesk
+- **Code font**: Geist Mono
+- **Border Radius**: `12px` (cards), `6px` (buttons)
+- **Glassmorphism**: `backdrop-filter: blur(12px)` + `rgba(255,255,255,0.05)` bg
 
 ## File Structure Template
 

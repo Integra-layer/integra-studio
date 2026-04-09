@@ -32,34 +32,16 @@ Before deploying, verify:
 
 ## Network Configuration
 
-```typescript
-// hardhat.config.ts network entry
-networks: {
-  integraTestnet: {
-    url: "https://testnet-rpc.integralayer.com",
-    chainId: 26217,
-    accounts: [process.env.DEPLOYER_PRIVATE_KEY!],
-    gasPrice: "auto",
-  },
-}
+Read `knowledge/networks/mainnet.md` or `knowledge/networks/testnet.md` based on the project's target network. Read `knowledge/networks/shared.md` for token info (IRL/airl), WIRL address, precompile addresses, and decimal conversion warnings. Never hardcode chain IDs, RPC URLs, or explorer URLs.
 
-// Verification (if explorer supports it)
-etherscan: {
-  apiKey: {
-    integraTestnet: process.env.EXPLORER_API_KEY || "placeholder",
-  },
-  customChains: [
-    {
-      network: "integraTestnet",
-      chainId: 26217,
-      urls: {
-        apiURL: "https://testnet-explorer.integralayer.com/api",
-        browserURL: "https://testnet-explorer.integralayer.com",
-      },
-    },
-  ],
-}
-```
+Check the project's `.integra/config.json` or target network setting to determine which network to deploy to. Both mainnet and testnet are supported:
+
+- **Mainnet**: Chain ID 26217, min gas price 5 Twei -- see `knowledge/networks/mainnet.md`
+- **Testnet**: Chain ID 26218, free gas -- see `knowledge/networks/testnet.md`
+- **Explorer (EVM)**: `blockscout.integralayer.com` for both networks
+- **Explorer (Cosmos)**: `scan.integralayer.com` for both networks
+
+When generating `hardhat.config.ts` network entries, read the chain ID, RPC URL, and explorer URL from the appropriate `knowledge/networks/` file.
 
 ## Deployment Procedure
 
@@ -101,9 +83,9 @@ After all contracts are deployed, update `.env.local` and `.env.example`:
 # .env.local (actual values — NEVER commit)
 NEXT_PUBLIC_CONTRACT_A_ADDRESS=0x1234...
 NEXT_PUBLIC_CONTRACT_B_ADDRESS=0x5678...
-NEXT_PUBLIC_CHAIN_ID=26217
-NEXT_PUBLIC_RPC_URL=https://testnet-rpc.integralayer.com
-NEXT_PUBLIC_EXPLORER_URL=https://testnet-explorer.integralayer.com
+NEXT_PUBLIC_CHAIN_ID=<from knowledge/networks/ target network>
+NEXT_PUBLIC_RPC_URL=<from knowledge/networks/ target network>
+NEXT_PUBLIC_EXPLORER_URL=<from knowledge/networks/ target network>
 NEXT_PUBLIC_WEB3AUTH_CLIENT_ID=BM4-vTeJRs0OW-iD2zqCUdNEbgqW-dEGMWUS53FVYpUjnKZqaBP_0njivHaDPZnNzJ8jfDd6b8gY_p0ROmIs6Jc
 
 # .env.example (placeholder values — committed)
@@ -176,7 +158,7 @@ Run these checks manually or via script:
 # Deployment Report
 
 ## Network
-- Chain: Integra Testnet (Chain ID: 26217)
+- Chain: Integra <Mainnet|Testnet> (Chain ID: <from knowledge/networks/>)
 - Deployer: 0x{address}
 - Date: {YYYY-MM-DD HH:MM UTC}
 - Total gas used: {amount} IRL
