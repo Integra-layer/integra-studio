@@ -84,23 +84,65 @@ If they're still fuzzy, use AskUserQuestion to ask ONE more shaping question bas
 
 This forces them to crystallize. If they still can't, THEN offer 2-3 options — but these must be GENERATED from the conversation, not from a template. Each option should feel like it could only exist because of what this specific person said.
 
-### Q5 — Scope and name
+### Q5 — Name
 
 Once the idea is clear, use AskUserQuestion:
 
-"Love it. Two quick ones: How ambitious should we go — a focused prototype (1-2 days), a solid MVP (3-5 days), or the full vision (1-2 weeks)? And what do you want to call it?"
+"Love it. What do you want to call it?"
 
-Accept both answers in one response. If they skip the name, generate 3 options that feel connected to THEIR idea (not generic "Nexus/Forge/Pulse" names — names that reference their concept).
+If they skip the name or say "I don't know", generate 3 options that feel connected to THEIR idea (not generic "Nexus/Forge/Pulse" names — names that reference their concept).
 
 ---
 
-## NETWORK SELECTION (early in wizard)
+## PHASE 1.5: TECHNICAL CONFIGURATION (4 selectable questions)
 
-Early in the wizard, after understanding the person's idea and before synthesis, use AskUserQuestion:
+Now that the idea and name are set, ask 4 quick selectable questions to configure the project. These are numbered-option questions — the user picks a number.
 
-**"Build for mainnet or testnet? Mainnet (Chain ID 26217) is production-ready. Testnet (Chain ID 26218) is free and great for development. (default: mainnet)"**
+### Q5b — Scope
 
-Use the selection to determine which `knowledge/networks/` file to reference throughout the project setup. Store the choice in the project's `.integra/config.json` as `targetNetwork`.
+Use AskUserQuestion:
+
+"How ambitious should we go?
+
+1. Focused prototype (1-2 days, core concept only)
+2. Solid MVP (3-5 days, usable product)
+3. Full vision (1-2 weeks, complete feature set)"
+
+### Q6 — Network Selection
+
+Use AskUserQuestion:
+
+"Which network are you building for?
+
+1. Mainnet (production-ready, Chain ID 26217, real IRL tokens)
+2. Testnet (development, Chain ID 26218, free IRL from faucet) (recommended)
+3. Both (separate configs for each)"
+
+Use the selection to determine which `knowledge/networks/` file to reference throughout the project setup. Store the choice in the project's `.integra/config.json` as `network`.
+
+### Q7 — Branding Toggle
+
+Use AskUserQuestion:
+
+"Design approach for your dApp?
+
+1. Integra official branding (Coral palette, Euclid Circular B font, dark theme)
+2. Custom design (AI generates a unique look based on your concept)"
+
+If the user picks **1 (Integra official)**: downstream agents load `knowledge/design-systems/integra-brand.md` for all design decisions.
+If the user picks **2 (Custom)**: during the build phase, the `ui-ux-pro-max` skill generates a custom design system saved to `knowledge/design-systems/custom-brand.md`.
+
+### Q8 — UI Generation Method
+
+Use AskUserQuestion:
+
+"How should we build the UI?
+
+1. Generate with Stitch AI (Google's design tool creates screens, we refine)
+2. Build manually (component-by-component with shadcn/ui)
+3. Decide later (skip for now, choose during build phase)"
+
+---
 
 ## PHASE 2: SYNTHESIS
 
@@ -116,6 +158,9 @@ Present a summary. This must feel PERSONAL, not templated:
 **Who it's for:** {inferred from conversation, not from a predefined list}
 **What makes it unique:** {the thing that connects to THIS person's background}
 **Scope:** {Prototype / MVP / Full}
+**Network:** {Mainnet / Testnet / Both}
+**Branding:** {Integra official / Custom design}
+**UI approach:** {Stitch AI / Manual / Deferred}
 **Integra features it'll use:** {auto-selected based on the idea — explain WHY each one}
 ```
 
@@ -136,7 +181,18 @@ Once confirmed, say briefly what's happening, then launch 4 agents in parallel:
 3. **Frontend Designer agent** — pages, components, user flows
 4. **Integration Planner agent** — Integra ecosystem connections
 
-Pass each agent the FULL conversation context — the person's background, pain point, idea, and blueprint. Agents should design something that fits THIS person, not a generic template.
+Pass the following to the discovery agent as structured input (the agent is non-interactive -- it produces a Discovery Brief without asking questions):
+- background: Q1 answer
+- painPoint: Q2 answer
+- spark: Q3 answer
+- idea: Q4 answer (if asked)
+- name: Q5 answer
+- scope: Q5b answer (prototype/mvp/full)
+- network: Q6 answer (mainnet/testnet/both)
+- branding: Q7 answer (integra/custom)
+- uiGeneration: Q8 answer (stitch/manual/deferred)
+
+Pass each agent the FULL conversation context — the person's background, pain point, idea, blueprint, AND the Discovery Brief. Agents should design something that fits THIS person, not a generic template.
 
 ### Step 3 — Present and confirm
 
@@ -152,7 +208,12 @@ Show the compiled project brief. Use AskUserQuestion:
 
 Use AskUserQuestion:
 
-"Where should I create the project? (default: ~/projects/{name-kebab-case})"
+"Where should I create the project?
+
+1. Default location (~/projects/{name-kebab-case})
+2. Let me specify a custom path"
+
+If the user picks 2, follow up with AskUserQuestion to get the path.
 
 ### Step 2 — Scaffold
 
@@ -163,7 +224,17 @@ Create the project structure:
 - `docs/FRONTEND.md` — from frontend designer
 - `docs/INTEGRATIONS.md` — from integration planner
 - `.claude/CLAUDE.md` — project-specific instructions
-- `hardhat.config.ts` — pre-configured for Integra (Chain ID 26217 mainnet or 26218 testnet -- see `knowledge/networks/`)
+- `.integra/config.json` — project configuration from wizard choices:
+  ```json
+  {
+    "network": "testnet",
+    "branding": "integra",
+    "uiGeneration": "manual",
+    "scope": "mvp",
+    "name": "My dApp"
+  }
+  ```
+- `hardhat.config.ts` — pre-configured for Integra (read chain ID and RPC from `knowledge/networks/` based on config.json network choice)
 - `next.config.ts`, `tailwind.config.ts`, `package.json`
 
 The PRD MUST reference the person's unique context — their background, the problem they identified, why this solution matters to them specifically. It should read like it was written FOR one person, not for a category.
