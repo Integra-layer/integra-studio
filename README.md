@@ -1,40 +1,24 @@
 <div align="center">
 
-<br />
-
-<img src="https://raw.githubusercontent.com/Integra-layer/integra-brand/main/public/logos/integra-mark.svg" alt="Integra" width="80" />
-
-<br /><br />
+<img src="https://raw.githubusercontent.com/Integra-layer/integra-brand/main/public/logos/integra-mark.svg" alt="Integra" width="72" />
 
 # Integra Developer Studio
 
-### The AI-powered dApp factory for the Integra blockchain.
+**One conversation. Eight agents. Production-ready dApp.**
 
-One conversation. Eight agents. Production-ready code.
-
-<br />
+A Claude Code plugin that guides you from idea to deployed dApp on the Integra blockchain.
 
 [![Claude Code](https://img.shields.io/badge/Claude_Code-Plugin-FF6D49?style=for-the-badge)](https://claude.ai/claude-code)
 [![Mainnet](https://img.shields.io/badge/Mainnet-26217-00A186?style=for-the-badge)]()
 [![Testnet](https://img.shields.io/badge/Testnet-26218-FFC17A?style=for-the-badge)]()
-[![Brand Kit](https://img.shields.io/badge/Brand_Kit-integra--brand-F34499?style=for-the-badge)](https://github.com/Integra-layer/integra-brand)
-
-<br />
-
-**You talk. The studio builds.** Tell it who you are and what you care about.
-It designs the architecture, writes the contracts, builds the frontend,
-wires up the ecosystem, and deploys — all while you approve every step.
-
-<br />
 
 </div>
 
 ---
 
-## :rocket: Quick start
+## Quick start
 
 ```bash
-# Point Claude Code to the plugin
 claude --plugin-dir /path/to/integra-studio
 ```
 
@@ -42,325 +26,251 @@ claude --plugin-dir /path/to/integra-studio
 /integra-studio:start
 ```
 
-That's it. The wizard takes it from there.
-
-> [!TIP]
-> Never written Solidity? No problem. The wizard adapts to your experience level — from first-timer to senior blockchain dev.
+The wizard handles the rest.
 
 ---
 
-## :eyes: How it works
+## How it works
 
-<div align="center">
-<img src="docs/visuals/workflow.png" alt="Integra Developer Studio Workflow" width="800" />
-</div>
+```mermaid
+graph LR
+    A[You] -->|background & interests| B[Discovery]
+    B --> C[Configure]
+    C --> D[4 Agents Design in Parallel]
+    D --> E[Build · 6 Phases]
+    E --> F[Review · 6 Checks]
+    F --> G[Deploy]
+    G --> H[yourapp.integralayer.com]
 
-<br />
-
-The studio runs a **conversation-driven pipeline**:
-
-1. **:speech_balloon: Discovery** — The wizard asks about your background, interests, and problems. No menus. No templates. Every idea emerges from your unique perspective.
-
-2. **:gear: Configuration** — You pick your network (mainnet/testnet), branding (Integra official or custom AI-generated), and UI method (Stitch AI or manual).
-
-3. **:busts_in_silhouette: Parallel design** — Four agents work simultaneously: Architect, Contract Designer, Frontend Designer, and Integration Planner. You review the blueprint.
-
-4. **:hammer_and_wrench: Phase-by-phase build** — Six phases, each requiring your approval:
-
-   `Contracts` :arrow_right: `Frontend` :arrow_right: `Integration` :arrow_right: `UI Polish` :arrow_right: `XP System` :arrow_right: `Testing`
-
-5. **:mag: Six-check review** — Security, quality, compliance, tokens, UX, and performance. Graded A-F.
-
-6. **:globe_with_meridians: Deploy** — Contracts verified on-chain, frontend live at `yourapp.integralayer.com`.
+    style A fill:#FF6D49,color:#fff,stroke:#FC4E23
+    style H fill:#1FC16B,color:#fff,stroke:#0a8a4a
+```
 
 > [!IMPORTANT]
-> **You decide everything.** Every phase has an approval gate. The studio never proceeds without your explicit go-ahead.
+> Every step requires your approval. The studio never proceeds without your go-ahead.
 
 ---
 
-## :joystick: Commands
+## Commands
 
-### Start something new
-
-| Command | What it does |
-|:--------|:------------|
-| **`/integra-studio:start`** | Interactive wizard. Discovers who you are, shapes an idea together, picks tokens and design mood, scaffolds the project with personalized docs. |
-| **`/integra-studio:brainstorm`** | Zero-commitment idea exploration. Generates dApp concepts based on your background. |
-| **`/integra-studio:research`** | Deep-dive into contract patterns, security pitfalls, gas optimization, and frontend UX *before* you write any code. |
-
-### Build and ship
-
-| Command | What it does |
-|:--------|:------------|
-| **`/integra-studio:build`** | The main event. Six phases, each with approval gates. Contracts, frontend, integration, UI polish, XP, testing. |
-| **`/integra-studio:review`** | Six-check quality audit with A-F grading. Covers security, quality, compliance, tokens, UX, and performance. |
-| **`/integra-studio:deploy`** | Ship to testnet or mainnet. Contracts + frontend + subdomain at `yourapp.integralayer.com`. |
-
-### Learn and track
-
-| Command | What it does |
-|:--------|:------------|
-| **`/integra-studio:explore`** | Interactive tour of Integra features — Asset Passport, GOB, Agent Arena, XP, tokens. |
-| **`/integra-studio:status`** | Project dashboard. What's built, what's next, what needs attention. |
+| Command | Purpose |
+|:--------|:--------|
+| `/integra-studio:start` | Wizard — shapes your idea, scaffolds the project |
+| `/integra-studio:brainstorm` | Explore ideas, no commitment |
+| `/integra-studio:research` | Investigate patterns and pitfalls before building |
+| `/integra-studio:build` | Build phase-by-phase with approval gates |
+| `/integra-studio:review` | 6-check quality audit, graded A-F |
+| `/integra-studio:deploy` | Ship to testnet or mainnet |
+| `/integra-studio:explore` | Learn about Integra features |
+| `/integra-studio:status` | Check project progress |
 
 ---
 
-## :coin: Token ecosystem
+## Tokens
 
-<div align="center">
-<img src="docs/visuals/tokens.png" alt="Integra Token Ecosystem" width="800" />
-</div>
+Every dApp supports three tokens. The wizard selects which matter for your use case.
 
-<br />
+```mermaid
+graph TB
+    subgraph tokens[" "]
+        IRL["<b>IRL</b><br/>Native gas token<br/>Fees · Staking · Value"]
+        tUSDI["<b>tUSDI</b><br/>ERC-20 Stablecoin<br/>Pairs · Payments · Prizes"]
+        WIRL["<b>WIRL</b><br/>Wrapped IRL<br/>Contract interactions"]
+    end
 
-Every dApp ships with three tokens. The wizard auto-selects which ones matter based on your dApp type:
+    style IRL fill:#FF6D49,color:#fff,stroke:#FC4E23
+    style tUSDI fill:#335CFF,color:#fff,stroke:#2244cc
+    style WIRL fill:#00A186,color:#fff,stroke:#007a63
+```
 
-| Token | Type | What it's for | Address |
-|:------|:-----|:-------------|:--------|
-| **`IRL`** | Native | Gas fees, staking, value storage | Native (no contract address) |
-| **`tUSDI`** | ERC-20 | Stablecoin — trading pairs, payments, prizes | `0xa640d8b5c9cb3b989881b8e63b0f30179c78a04f` |
-| **`WIRL`** | ERC-20 | Wrapped IRL for smart contract interactions | `0x5002000000000000000000000000000000000001` |
-
-**How tokens adapt per category:**
-
-| dApp type | Primary | Secondary | Example use |
-|:----------|:--------|:----------|:------------|
-| :bank: DeFi | IRL + tUSDI | WIRL | IRL/tUSDI trading pairs, tUSDI lending |
-| :video_game: Gaming | IRL | tUSDI | IRL entry fees, tUSDI prize pools |
-| :framed_picture: NFT | IRL | tUSDI (optional) | IRL minting fees, tUSDI fixed-price sales |
-| :people_holding_hands: Social | IRL | tUSDI | IRL governance staking, tUSDI tipping |
-| :robot: AI Agents | IRL | tUSDI | IRL gas budget, tUSDI trading capital |
-| :wrench: Infrastructure | IRL | tUSDI (optional) | IRL gas costs, tUSDI API credits |
+| dApp type | Tokens used | Example |
+|:----------|:-----------|:--------|
+| DeFi | IRL + tUSDI + WIRL | IRL/tUSDI trading pairs |
+| Gaming | IRL + tUSDI | IRL entry fees, tUSDI prize pools |
+| NFT | IRL (+ tUSDI optional) | IRL minting, tUSDI fixed-price sales |
+| Social | IRL + tUSDI | IRL governance, tUSDI tipping |
+| AI Agents | IRL + tUSDI | IRL gas budget, tUSDI trading capital |
+| Infrastructure | IRL (+ tUSDI optional) | IRL gas costs, tUSDI API credits |
 
 > [!TIP]
-> On testnet, the faucet at **`testnet.integralayer.com`** distributes **10 IRL + 1,000 tUSDI** per request (24h cooldown). Your dApp auto-detects zero balances and guides users there.
-
-> [!WARNING]
-> **Dual decimal warning:** IRL uses **18 decimals** on EVM but **6 decimals** on Cosmos SDK. Any code bridging between layers must explicitly convert. The studio handles this automatically.
-
----
-
-## :busts_in_silhouette: Eight agents, one team
-
-<div align="center">
-<img src="docs/visuals/agents.png" alt="Eight AI Agents" width="800" />
-</div>
-
-<br />
-
-| Agent | What it does | Model |
-|:------|:------------|:------|
-| :mag: **Discovery** | Understands who you are, shapes the idea with you | Sonnet |
-| :triangular_ruler: **Architect** | Designs system structure, tech stack, data flow | Opus |
-| :scroll: **Contract Designer** | Writes Solidity interfaces and specs | Sonnet |
-| :computer: **Frontend Designer** | Designs pages, components, user flows (+ Stitch AI) | Sonnet |
-| :link: **Integration Planner** | Maps ecosystem connections, selects tokens, plans XP events | Haiku |
-| :keyboard: **Executor** | Writes all the code through a 7-skill UI pipeline | Sonnet |
-| :shield: **Reviewer** | Runs 6 quality checks, grades A-F | Opus |
-| :rocket: **Deployer** | Ships to testnet/mainnet, configures subdomain | Sonnet |
-
-> [!NOTE]
-> Agents run **in parallel** when possible. After discovery, the Architect, Contract Designer, Frontend Designer, and Integration Planner all work simultaneously — cutting design time significantly.
-
----
-
-## :performing_arts: Design adaptation
-
-<div align="center">
-<img src="docs/visuals/design-adaptation.png" alt="Design Adaptation by Category" width="800" />
-</div>
-
-<br />
-
-The studio doesn't just build — it **designs with intent**. Each dApp category gets a visual identity rooted in color psychology:
-
-| Category | Mood | Palette | Why it works |
-|:---------|:-----|:--------|:-------------|
-| :bank: **DeFi** | Trust, precision | Cool teal/blue + gold accents | Users handle money. The UI must feel reliable and data-accurate. |
-| :video_game: **Gaming** | Excitement, energy | Vibrant purple + neon accents | Dopamine-driven design. Reward moments should feel celebratory. |
-| :framed_picture: **NFT** | Gallery, premium | Neutral dark + bold accent | The art is the content. The UI is the frame, not the painting. |
-| :people_holding_hands: **Social** | Warm, community | Coral/orange tones | Human and inviting. Centered around people, not data. |
-| :robot: **AI Agents** | Futuristic, sleek | Dark + cyan/neon glow | Control-panel feel. Agents should feel "alive" with streaming data. |
-| :wrench: **Infrastructure** | Technical, reliable | Neutral + green accents | Documentation-first. Developers want speed, not decoration. |
-
-> [!NOTE]
-> With **Integra branding**, these are subtle variations within the official Coral palette. With **custom branding**, the `ui-ux-pro-max` skill generates a full design system tailored to your category.
-
----
-
-## :white_check_mark: Quality review
-
-<div align="center">
-<img src="docs/visuals/review-checklist.png" alt="Six-Check Quality Review" width="800" />
-</div>
-
-<br />
-
-The `/review` command runs **six checks** and grades your dApp **A through F**:
-
-| # | Check | What it catches |
-|:--|:------|:---------------|
-| :lock: | **Contract security** | Reentrancy, access control, input validation, unchecked returns |
-| :keyboard: | **Frontend quality** | TypeScript strict, zero `any`, error boundaries, React patterns |
-| :link: | **Integra compliance** | Web3Auth config, XP events, chain IDs, design system adherence |
-| :coin: | **Token integration** | Correct addresses, configurable (not hardcoded), category-appropriate selection |
-| :art: | **UI/UX quality** | WCAG AA accessibility, design-category fit, onboarding flow, error UX |
-| :zap: | **Performance** | Bundle <200KB, LCP <2.5s, CLS <0.1, Server Components usage |
-
----
-
-## :books: Best practices library
-
-Seven comprehensive guides that every skill reads during build and review:
-
-| Guide | What it covers |
-|:------|:--------------|
-| :art: **UI/UX Design** | Layout fundamentals, component patterns, loading/error/empty states, Web3 transaction UX |
-| :performing_arts: **Design Adaptation** | Color psychology per category, Integra brand adaptations, palette rationale |
-| :zap: **Performance** | Next.js optimization, bundle budgets, gas patterns, Core Web Vitals targets |
-| :wheelchair: **Accessibility** | WCAG AA: contrast ratios, keyboard nav, ARIA, screen readers, reduced motion |
-| :shield: **Security** | XSS prevention, secret management, transaction confirmation, Stitch safety |
-| :white_check_mark: **Quality Checklist** | Master A-F grading across contracts, frontend, tokens, a11y, performance, docs |
-| :wave: **Onboarding UX** | First-time flows, zero-balance detection, progressive disclosure, error mapping |
-
-> [!TIP]
-> These guides apply to **both new projects and existing ones**. Run `/review` on any Integra dApp to audit it against the full checklist.
-
----
-
-## :paintbrush: UI generation
-
-Two paths, same premium quality:
-
-<table>
-<tr>
-<td width="50%">
-
-**:sparkles: With Stitch AI**
-<sub>Requires <code>STITCH_API_KEY</code></sub>
-
-1. Frontend Designer generates screens via Stitch MCP
-2. You pick from 1-3 style variants
-3. Executor rebuilds in Next.js/React
-4. 7-skill UI pipeline polishes everything
-
-</td>
-<td width="50%">
-
-**:hammer: Manual pipeline**
-<sub>No setup needed</sub>
-
-1. Frontend Designer produces component trees
-2. Executor builds from the design document
-3. 7-skill UI pipeline polishes everything
-
-</td>
-</tr>
-</table>
-
-**The 7-skill pipeline** (runs on every frontend):
-
-`web-design-guidelines` :arrow_right: `frontend-patterns` :arrow_right: `react-dev` :arrow_right: `shadcn-ui` :arrow_right: `ui-animation` :arrow_right: `taste-skill` :arrow_right: `ui-ux-pro-max`*
-
-<sub>*ui-ux-pro-max only runs for custom branding</sub>
-
----
-
-## :hammer: Tech stack
-
-Every generated dApp follows Integra conventions:
-
-| Layer | Stack |
-|:------|:------|
-| :gear: **Contracts** | Solidity 0.8.24+, Hardhat, OpenZeppelin, Ignition deployment |
-| :globe_with_meridians: **Frontend** | Next.js 14+, TypeScript strict, Tailwind CSS, shadcn/ui |
-| :key: **Auth** | Web3Auth — Google, X, Email social login (no MetaMask required) |
-| :art: **Design** | [integra-brand](https://github.com/Integra-layer/integra-brand) or custom via ui-ux-pro-max |
-| :coin: **Tokens** | IRL + tUSDI + WIRL with per-category selection |
-| :cloud: **Deploy** | `yourapp.integralayer.com` via Caddy reverse proxy |
-
----
-
-## :file_folder: Project structure
+> Testnet faucet at **`testnet.integralayer.com`** gives **10 IRL + 1,000 tUSDI** per request.
 
 <details>
-<summary><strong>Click to expand full tree</strong></summary>
+<summary>Token addresses</summary>
 
-```
-integra-studio/
-|-- CLAUDE.md                          Main instructions
-|-- agents/                            8 agent definitions
-|   |-- discovery.md
-|   |-- architect.md
-|   |-- contract-designer.md
-|   |-- frontend-designer.md           + Stitch MCP tools
-|   |-- integration-planner.md
-|   |-- executor.md                    + 7-skill UI pipeline
-|   |-- reviewer.md
-|   +-- deployer.md
-|-- skills/                            8 commands
-|   |-- start/                         Interactive wizard
-|   |-- build/                         Phase-by-phase builder
-|   |-- research/                      Pre-build investigation
-|   |-- brainstorm/                    Idea exploration
-|   |-- explore/                       Ecosystem tour
-|   |-- review/                        6-check quality audit
-|   |-- deploy/                        Testnet/mainnet deployment
-|   +-- status/                        Progress tracking
-|-- knowledge/
-|   |-- best-practices/                7 quality & design guides
-|   |-- design-systems/                Integra brand + custom template
-|   |-- networks/                      Mainnet, testnet, tokens
-|   +-- templates/                     6 category scaffolds
-+-- docs/
-    +-- visuals/                       Architecture and feature diagrams
-```
+| Token | Address |
+|:------|:--------|
+| tUSDI (testnet) | `0xa640d8b5c9cb3b989881b8e63b0f30179c78a04f` |
+| WIRL | `0x5002000000000000000000000000000000000001` |
+| USDI (mainnet) | TBD |
 
 </details>
 
 ---
 
-## :wrench: Environment
+## Agents
 
-The only optional env var for the studio itself:
+```mermaid
+graph LR
+    subgraph parallel["Run in parallel"]
+        AR[Architect]
+        CD[Contract Designer]
+        FD[Frontend Designer]
+        IP[Integration Planner]
+    end
 
-```bash
-# Google Stitch AI (optional — everything works without it)
-STITCH_API_KEY=your_key_here
+    DI[Discovery] --> parallel
+    parallel --> EX[Executor]
+    EX --> RE[Reviewer]
+    RE --> DE[Deployer]
+
+    style DI fill:#FF6D49,color:#fff,stroke:#FC4E23
+    style EX fill:#F34499,color:#fff,stroke:#c4367a
+    style RE fill:#335CFF,color:#fff,stroke:#2244cc
+    style DE fill:#1FC16B,color:#fff,stroke:#0a8a4a
 ```
 
-> [!NOTE]
-> Generated projects get a full `.env.example` with network config, Web3Auth, contract addresses, token addresses (tUSDI, WIRL), and Stitch.
+| Agent | Role |
+|:------|:-----|
+| **Discovery** | Understands who you are, shapes the idea |
+| **Architect** | System design, tech stack, data flow |
+| **Contract Designer** | Solidity interfaces and specs |
+| **Frontend Designer** | Pages, components, user flows (+ Stitch AI) |
+| **Integration Planner** | Ecosystem connections, token selection, XP events |
+| **Executor** | Writes all code through 7-skill UI pipeline |
+| **Reviewer** | 6 quality checks, A-F grading |
+| **Deployer** | Ships to testnet/mainnet, configures subdomain |
 
 ---
 
-## :star2: Principles
+## Design adaptation
 
-| | Principle | What it means |
-|:-|:----------|:-------------|
-| :bulb: | **Your idea, not ours** | The studio adapts to your background and interests. It has a conversation, not a menu. Two people will never get the same dApp. |
-| :raised_hand: | **You decide everything** | Every phase has an approval gate. Nothing ships without your explicit go-ahead. |
-| :mortar_board: | **Works at any level** | Never written Solidity? The wizard guides you. Senior dev? It stays out of your way. |
-| :chains: | **Integra-native** | Every project uses the brand system, emits XP events, integrates with the token ecosystem, deploys to `*.integralayer.com`. |
-| :gem: | **Premium UI by default** | Seven specialized skills ensure proper layout, typography, animations, accessibility, and visual polish. |
-| :white_check_mark: | **Quality baked in** | Best practices aren't bolted on — they're read during every build and enforced during every review. A-F grading keeps the bar high. |
+The UI adapts to your dApp category:
+
+| Category | Mood | Why |
+|:---------|:-----|:----|
+| **DeFi** | Trust · Precision | Users handle money — cool tones, data-dense dashboards |
+| **Gaming** | Energy · Excitement | Dopamine-driven — vibrant accents, bold animations |
+| **NFT** | Gallery · Premium | Art is the content — neutral surfaces, generous whitespace |
+| **Social** | Warm · Community | People-first — coral tones, feed layouts |
+| **AI Agents** | Futuristic · Sleek | Control-panel feel — dark surfaces, streaming data |
+| **Infrastructure** | Technical · Reliable | Developer-focused — code-friendly, minimal decoration |
+
+---
+
+## Quality review
+
+`/review` runs 6 checks and grades **A through F**:
+
+| Check | What it catches |
+|:------|:---------------|
+| :lock: **Contract Security** | Reentrancy, access control, input validation |
+| :keyboard: **Frontend Quality** | TypeScript strict, error boundaries, React patterns |
+| :link: **Integra Compliance** | Web3Auth, XP events, chain IDs, design system |
+| :coin: **Token Integration** | Correct addresses, configurable, category-appropriate |
+| :art: **UI/UX Quality** | WCAG AA, design-category fit, onboarding, errors |
+| :zap: **Performance** | Bundle <200KB, LCP <2.5s, CLS <0.1 |
+
+---
+
+## Best practices
+
+7 guides in `knowledge/best-practices/` — read by every skill during build and review:
+
+| Guide | Covers |
+|:------|:-------|
+| `ui-ux-design.md` | Layout, components, states, Web3 transaction UX |
+| `design-adaptation.md` | Color psychology per category, palette rationale |
+| `performance.md` | Next.js, bundle budgets, gas optimization, Core Web Vitals |
+| `accessibility.md` | WCAG AA, keyboard nav, ARIA, screen readers |
+| `security-frontend.md` | XSS, secrets, transaction safety, Stitch safety |
+| `quality-checklist.md` | Master A-F grading checklist |
+| `onboarding-ux.md` | First-time UX, zero-balance flows, error mapping |
+
+---
+
+## Tech stack
+
+| Layer | Stack |
+|:------|:------|
+| Contracts | Solidity 0.8.24+, Hardhat, OpenZeppelin |
+| Frontend | Next.js 14+, TypeScript strict, Tailwind, shadcn/ui |
+| Auth | Web3Auth (Google, X, Email) |
+| Design | [integra-brand](https://github.com/Integra-layer/integra-brand) or custom AI-generated |
+| Tokens | IRL + tUSDI + WIRL |
+| Deploy | `yourapp.integralayer.com` via Caddy |
+
+---
+
+## Changelog
+
+### V3 — Multi-token, best practices, design intelligence
+
+- **Multi-token ecosystem** — IRL + tUSDI + WIRL supported across all templates, skills, and generated code. Token selection adapts per dApp category.
+- **Best practices library** — 7 guides (UI/UX, performance, a11y, security, onboarding, quality checklist, design adaptation) read by every skill.
+- **Design adaptation** — Category-specific color psychology and layout guidance. DeFi gets trust-blue dashboards, gaming gets vibrant energy, NFT gets gallery minimalism.
+- **Enhanced review** — 6 checks instead of 4. Added token integration, UI/UX quality, and performance. A-F grading.
+- **Smarter wizard** — Blueprint includes token rationale and design mood. Config stores `category` and `tokens` for downstream skills.
+- **Quality checklist** — Master checklist for build, review, and audits.
+- **Onboarding UX** — Zero-balance detection, faucet guidance, Web3 error mapping.
+
+### V2 — Dual network, Stitch AI, branding toggle
+
+- **Dual network** — Mainnet (26217) and testnet (26218). Wizard asks which one.
+- **Stitch AI** — Google Stitch generates UI screens. You pick a variant, executor rebuilds in React.
+- **Branding toggle** — Official Integra brand or custom AI-generated palette via ui-ux-pro-max.
+- **UI skill pipeline** — 7 skills polish every frontend: guidelines, pro-max, taste, shadcn, animation, patterns, react-dev.
+- **Selectable wizard** — Technical questions have numbered options instead of open-ended prompts.
+
+### V1 — Foundation
+
+- **Conversational wizard** — Discovery-driven, never template-driven. Every idea emerges from conversation.
+- **8 agents** — Discovery, Architect, Contract Designer, Frontend Designer, Integration Planner, Executor, Reviewer, Deployer.
+- **Phase-gate model** — 6 build phases, each requiring approval.
+- **Integra ecosystem** — Asset Passport, Wrapper, GOB, Agent Arena, XP System, Web3Auth integration.
+- **6 category templates** — DeFi, AI Agents, NFT, Social, Gaming, Infrastructure.
+- **Security checklist** — ReentrancyGuard, access control, input validation, contract verification.
+
+---
+
+<details>
+<summary><strong>Project structure</strong></summary>
+
+```
+integra-studio/
+|-- CLAUDE.md                     Main instructions
+|-- agents/                       8 agent definitions
+|-- skills/                       8 commands (start, build, research, brainstorm, explore, review, deploy, status)
+|-- knowledge/
+|   |-- best-practices/           7 quality & design guides
+|   |-- design-systems/           Integra brand + custom template
+|   |-- networks/                 Mainnet, testnet, tokens
+|   +-- templates/                6 category scaffolds
++-- templates/                    Drop-in config files
+```
+
+</details>
+
+<details>
+<summary><strong>Environment</strong></summary>
+
+```bash
+# Optional — Stitch AI UI generation
+STITCH_API_KEY=your_key_here
+```
+
+Generated projects get a full `.env.example` with network config, Web3Auth, contract addresses, and token addresses.
+
+</details>
 
 ---
 
 <div align="center">
 
-<br />
-
-Built for [Integra](https://integralayer.com) :orange_heart:
-
-<br />
+Built for [Integra](https://integralayer.com)
 
 ```
 /integra-studio:start
 ```
-
-**Your next dApp is one conversation away.**
-
-<br />
 
 </div>
