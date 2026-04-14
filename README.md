@@ -40,7 +40,19 @@ That's it. The rest is a conversation.
 
 ---
 
-## What's new in V2
+## What's new in V3
+
+| Feature | What changed |
+|---------|-------------|
+| **Multi-token ecosystem** | Every dApp now supports IRL (native gas) + tUSDI (stablecoin) + WIRL (wrapped). Token selection adapts per dApp category. |
+| **tUSDI stablecoin** | Testnet stablecoin at `0xa640...04f` — DeFi pairs, payments, prize pools. Auto-included in every template. |
+| **Best practices library** | 7 comprehensive guides: UI/UX design, performance, accessibility, security, onboarding, quality checklist, design adaptation. |
+| **Design adaptation by category** | DeFi gets trust-blue data-dense layouts. Gaming gets energy-purple bold animations. NFT gets gallery minimalism. Each choice explained with design psychology. |
+| **Quality checklist** | Master checklist with A-F grading. Used by `/build`, `/review`, and audits. Covers contracts, frontend, tokens, accessibility, performance. |
+| **Enhanced review** | `/review` now checks token compliance, WCAG AA accessibility, design-category fit, onboarding UX, and Core Web Vitals. |
+| **Onboarding UX** | Zero-balance detection, faucet guidance, progressive disclosure, Web3 error → friendly message mapping. |
+
+### Previous (V2)
 
 | Feature | What changed |
 |---------|-------------|
@@ -138,13 +150,15 @@ They run in parallel when possible.
 The studio knows the Integra ecosystem:
 
 ```
-Networks      Mainnet (26217) + Testnet (26218) -- dual config
-Products      Asset Passport + Wrapper + GOB + Agent Arena
-Infra         Web3Auth + AgentAuth + XP System + Faucet
-Standards     ERC-7943 + ERC-3643 + ERC-8004 + ERC-6551
-Design        Integra brand tokens (Coral, Euclid Circular B)
-Stitch        Google Stitch MCP -- AI screen generation
-UI Pipeline   7 skills for premium frontend quality
+Networks       Mainnet (26217) + Testnet (26218) -- dual config
+Tokens         IRL (native) + tUSDI (stablecoin) + WIRL (wrapped) -- per-category selection
+Products       Asset Passport + Wrapper + GOB + Agent Arena
+Infra          Web3Auth + AgentAuth + XP System + Faucet
+Standards      ERC-7943 + ERC-3643 + ERC-8004 + ERC-6551
+Design         Integra brand tokens (Coral, Euclid Circular B)
+Stitch         Google Stitch MCP -- AI screen generation
+UI Pipeline    7 skills for premium frontend quality
+Best Practices 7 guides -- UI/UX, performance, a11y, security, onboarding, quality, design adaptation
 ```
 
 Plus the full [Integra brand system](https://github.com/Integra-layer/integra-brand) -- colors, fonts, gradients, components.
@@ -207,14 +221,23 @@ integra-studio/
 |   |-- product-ideas.md
 |   |-- stitch-integration.md          Stitch MCP setup + pipeline
 |   |-- ui-skill-pipeline.md           Lean vs full UI pipeline
+|   |-- best-practices/                Quality & design guides (NEW)
+|   |   |-- ui-ux-design.md            Layout, components, states, Web3 UX
+|   |   |-- design-adaptation.md       Color/mood per dApp category + rationale
+|   |   |-- performance.md             Next.js, bundle, gas, Core Web Vitals
+|   |   |-- accessibility.md           WCAG AA, keyboard, ARIA, contrast
+|   |   |-- security-frontend.md       XSS, secrets, tx safety, Stitch safety
+|   |   |-- quality-checklist.md       Master A-F grading checklist
+|   |   +-- onboarding-ux.md           First-time UX, zero-balance, error mapping
 |   |-- design-systems/
 |   |   |-- integra-brand.md           Official brand tokens
 |   |   +-- custom-brand.md            Custom brand template (ui-ux-pro-max)
 |   |-- networks/
 |   |   |-- mainnet.md                 Chain ID 26217
 |   |   |-- testnet.md                 Chain ID 26218
-|   |   +-- shared.md                  IRL/airl, WIRL, precompiles
-|   +-- templates/                     Per-category scaffolds
+|   |   |-- shared.md                  IRL/airl, WIRL, precompiles
+|   |   +-- tokens.md                  Token registry: IRL, tUSDI, WIRL (NEW)
+|   +-- templates/                     Per-category scaffolds (+ token integration)
 |       |-- defi-template.md
 |       |-- ai-agent-template.md
 |       |-- nft-template.md

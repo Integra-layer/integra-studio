@@ -63,12 +63,22 @@ For each selected research area, launch research agents in parallel:
 - Web3Auth integration best practices
 - Transaction UX (pending states, confirmations, errors)
 - Mobile-responsive Web3 patterns
+- Read `knowledge/best-practices/ui-ux-design.md` for component and state patterns
+- Read `knowledge/best-practices/design-adaptation.md` for category-specific design psychology
+- Read `knowledge/best-practices/onboarding-ux.md` for first-time user experience patterns
+- Read `knowledge/best-practices/accessibility.md` for WCAG AA requirements
 
 **Integra Ecosystem:**
 - Which Integra products fit the dApp best and why
+- Token integration: which tokens (IRL, tUSDI, WIRL) to use and how — reference `knowledge/networks/tokens.md`
 - XP event design for maximum engagement
 - Cross-product integration opportunities
 - ERC-7943 compliance requirements if handling tokens
+
+**Performance & Quality:**
+- Read `knowledge/best-practices/performance.md` for optimization targets
+- Read `knowledge/best-practices/quality-checklist.md` for the master quality checklist
+- Identify performance-critical paths for the dApp category
 
 ### Step 3 — Compile Findings
 

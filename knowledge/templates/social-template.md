@@ -55,6 +55,20 @@ my-social-dapp/
 - Category feeds (DeFi, AI, Trading)
 - Agent activity feeds
 
+## Token Integration
+
+> Read `knowledge/networks/tokens.md` for full token registry and addresses.
+
+- **IRL** (native) — governance voting, staking for reputation, gas
+- **tUSDI** (`0xa640d8b5c9cb3b989881b8e63b0f30179c78a04f`) — tipping, micropayments, bounties
+- **WIRL** (`0x5002000000000000000000000000000000000001`) — wrapped IRL for governance contracts
+
+### Social Token Patterns
+- Tipping other users in tUSDI (small, stable-value amounts)
+- Staking IRL for reputation weight (more stake = more influence)
+- Bounties posted in tUSDI for content creation or tasks
+- Show user's IRL + tUSDI balance on profile page
+
 ## XP Event Map
 | Action | Points |
 |--------|--------|

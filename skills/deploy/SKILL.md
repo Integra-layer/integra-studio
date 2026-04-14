@@ -28,6 +28,11 @@ For testnet deployment:
 
 Read `knowledge/networks/shared.md` for token info (IRL/airl), WIRL address, precompile addresses, and decimal conversion warnings. Never hardcode chain IDs, RPC URLs, or explorer URLs.
 
+Read `knowledge/networks/tokens.md` for the full token registry. Ensure deployed contracts have correct token addresses:
+- tUSDI (testnet): `0xa640d8b5c9cb3b989881b8e63b0f30179c78a04f`
+- WIRL: `0x5002000000000000000000000000000000000001`
+- For mainnet: USDI address TBD (replace tUSDI address in environment variables)
+
 ## Prerequisites
 
 Before deploying, verify ALL of the following:
@@ -57,7 +62,7 @@ Pre-flight Checklist:
 ```
 
 For the wallet check, if we can't verify on-chain, tell the user:
-"Make sure your deployer wallet has sufficient IRL for gas. Testnet: use the faucet at https://faucet.integralayer.com (10 IRL + 1,000 tUSDI per request). Mainnet: you need real IRL (min gas price is 5 Twei)."
+"Make sure your deployer wallet has sufficient IRL for gas. Testnet: use the faucet at https://faucet.integralayer.com (10 IRL + 1,000 tUSDI per request, 24h cooldown). Mainnet: you need real IRL (min gas price is 5 Twei)."
 
 If any check fails, show exactly what's wrong and how to fix it. Don't proceed until all checks pass.
 
@@ -116,7 +121,9 @@ Show verification status for each contract.
 
 Update the following files with the new contract addresses:
 - `.env` — add `NEXT_PUBLIC_<CONTRACT_NAME>_ADDRESS=0x...` for each contract
-- `src/lib/contracts.ts` — update the address constants
+- `.env` — ensure `NEXT_PUBLIC_TUSDI_ADDRESS=0xa640d8b5c9cb3b989881b8e63b0f30179c78a04f` (testnet) or `NEXT_PUBLIC_USDI_ADDRESS=0x...` (mainnet)
+- `.env` — ensure `NEXT_PUBLIC_WIRL_ADDRESS=0x5002000000000000000000000000000000000001`
+- `src/lib/contracts.ts` — update the address constants (including token addresses)
 - `deployments/testnet.json` — already done in Step 1
 
 Show the user the updated values.

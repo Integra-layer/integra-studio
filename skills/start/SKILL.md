@@ -115,10 +115,12 @@ Use AskUserQuestion:
 "Which network are you building for?
 
 1. Mainnet (production-ready, Chain ID 26217, real IRL tokens)
-2. Testnet (development, Chain ID 26218, free IRL from faucet) (recommended)
+2. Testnet (development, Chain ID 26218, free IRL + tUSDI from faucet) (recommended)
 3. Both (separate configs for each)"
 
 Use the selection to determine which `knowledge/networks/` file to reference throughout the project setup. Store the choice in the project's `.integra/config.json` as `network`.
+
+Also read `knowledge/networks/tokens.md` for the token registry. Based on the dApp category inferred from conversation, determine which tokens are primary/secondary using the Token Selection Guide in tokens.md.
 
 ### Q7 — Branding Toggle
 
@@ -162,6 +164,8 @@ Present a summary. This must feel PERSONAL, not templated:
 **Branding:** {Integra official / Custom design}
 **UI approach:** {Stitch AI / Manual / Deferred}
 **Integra features it'll use:** {auto-selected based on the idea — explain WHY each one}
+**Tokens:** {IRL + tUSDI + WIRL as needed — explain role of each based on dApp category, referencing knowledge/networks/tokens.md}
+**Design adaptation:** {category from knowledge/best-practices/design-adaptation.md — briefly explain why this mood/palette fits}
 ```
 
 For the Integra features: YOU decide which ones fit based on the idea. Don't ask them to pick from a list. Explain your reasoning briefly:
@@ -231,7 +235,13 @@ Create the project structure:
     "branding": "integra",
     "uiGeneration": "manual",
     "scope": "mvp",
-    "name": "My dApp"
+    "name": "My dApp",
+    "category": "defi",
+    "tokens": {
+      "primary": "IRL",
+      "secondary": "tUSDI",
+      "tertiary": "WIRL"
+    }
   }
   ```
 - `hardhat.config.ts` — pre-configured for Integra (read chain ID and RPC from `knowledge/networks/` based on config.json network choice)

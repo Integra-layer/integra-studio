@@ -56,6 +56,20 @@ Use AgentAuth to create AI-powered game characters:
 - Market makers in prediction games
 - AI opponents in strategy games
 
+## Token Integration
+
+> Read `knowledge/networks/tokens.md` for full token registry and addresses.
+
+- **IRL** (native) — entry fees, staking, rewards, gas
+- **tUSDI** (`0xa640d8b5c9cb3b989881b8e63b0f30179c78a04f`) — prize pools, stable-value rewards, tournament prizes
+- **WIRL** (`0x5002000000000000000000000000000000000001`) — wrapped IRL for in-game contract interactions
+
+### Gaming Token Patterns
+- Entry fees in IRL, prize pools in tUSDI (stable value)
+- In-game currency backed by tUSDI for predictable item pricing
+- Reward distributions in IRL for ecosystem engagement
+- Show both balances in Player HUD
+
 ## XP Event Map
 | Action | Points |
 |--------|--------|

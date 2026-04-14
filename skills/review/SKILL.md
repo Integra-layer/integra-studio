@@ -17,6 +17,17 @@ Comprehensive code review of an Integra dApp project. Checks security, quality, 
 
 When invoked, read the full project to understand scope, then delegate to the **reviewer** agent for analysis.
 
+### Required Reading Before Review
+- `knowledge/networks/tokens.md` — Token registry for compliance checks
+- `knowledge/best-practices/quality-checklist.md` — Master quality checklist (use as review framework)
+- `knowledge/best-practices/design-adaptation.md` — Category-specific design validation
+- `knowledge/best-practices/ui-ux-design.md` — UI/UX compliance checks
+- `knowledge/best-practices/accessibility.md` — WCAG AA checklist
+- `knowledge/best-practices/performance.md` — Performance targets
+- `knowledge/best-practices/security-frontend.md` — Frontend security checks
+- `knowledge/best-practices/onboarding-ux.md` — User onboarding quality
+- `.integra/config.json` — Project configuration (branding, network, category, tokens)
+
 ## Review Process
 
 ### Step 1: Project Scan
@@ -92,12 +103,46 @@ Check integration with the Integra ecosystem:
 - XP event emission — key user actions emit XP events as specified in INTEGRATIONS.md
 - Design system — uses correct color palette, typography, component patterns (check against knowledge/design-systems/integra-brand.md for Integra branding, or knowledge/design-systems/custom-brand.md for custom branding -- read .integra/config.json to determine which)
 - Contract standards — follows Integra conventions (check against knowledge/conventions.md)
+- Token integration — IRL (native) + tUSDI (ERC-20) supported per `knowledge/networks/tokens.md`. Token addresses configurable, not hardcoded. Correct tokens for dApp category per Token Selection Guide
+- Token display — balances shown in header/sidebar, proper decimal handling (18 decimals), locale-aware formatting
 
 **Recommended:**
-- Faucet link — testnet apps should have a "Get Test IRL" option
+- Faucet link — testnet apps should have a "Get Test IRL + tUSDI" option
 - Domain router — configured for `appname.integra.zone`
 - Explorer links — transaction hashes link to Integra explorer
 - Error messages reference Integra-specific issues (wrong chain, insufficient IRL, etc.)
+- Network badge — testnet/mainnet indicator visible at all times
+- Zero-balance onboarding — detect empty wallet, guide to faucet
+
+### Step 4b: UI/UX Quality Review
+
+Check against `knowledge/best-practices/` guides:
+
+**Design Adaptation (check against `knowledge/best-practices/design-adaptation.md`):**
+- Design mood matches dApp category (DeFi=trust, Gaming=energy, NFT=gallery, etc.)
+- Color choices are psychologically appropriate for the use case
+- Layout density matches category expectations
+
+**Accessibility (check against `knowledge/best-practices/accessibility.md`):**
+- Color contrast meets WCAG AA (4.5:1 body, 3:1 large text)
+- Keyboard navigation works for all interactive elements
+- Focus indicators visible
+- Semantic HTML used throughout
+- ARIA labels on icon-only buttons
+- `prefers-reduced-motion` supported
+
+**Onboarding UX (check against `knowledge/best-practices/onboarding-ux.md`):**
+- First-time experience is clear and welcoming
+- Web3Auth social login prominent
+- Zero-balance state handled gracefully
+- Error messages are user-friendly (not raw blockchain errors)
+- Transaction UX follows pending→submitted→confirmed flow
+
+**Performance (check against `knowledge/best-practices/performance.md`):**
+- Initial bundle < 200KB gzipped
+- Server Components used where possible
+- Images use `next/image`
+- No unnecessary re-renders
 
 ### Step 5: Test Coverage Review
 
@@ -132,11 +177,14 @@ Date: YYYY-MM-DD
 Overall Grade: A/B/C/D/F
 
 Summary:
-  Contracts: X findings (Y critical, Z high)
-  Frontend:  X findings (Y critical, Z high)
-  Integra:   X findings (Y required missing)
-  Tests:     X% coverage
-  Docs:      X/Y documents present
+  Contracts:      X findings (Y critical, Z high)
+  Frontend:       X findings (Y critical, Z high)
+  Integra:        X findings (Y required missing)
+  Tokens:         IRL ✓/✗ | tUSDI ✓/✗ | WIRL ✓/✗
+  UI/UX:          X findings (accessibility, design adaptation, onboarding)
+  Performance:    Bundle Xkb | LCP Xs | CLS X
+  Tests:          X% coverage
+  Docs:           X/Y documents present
 
 Critical Findings (must fix before deploy):
   [C1] contracts/Foo.sol:42 — Reentrancy in withdraw()

@@ -118,6 +118,20 @@ async function agentLoop(config: AgentConfig) {
 | Agent action (agent XP rate, 50%) | 12 |
 | Agent stopped by user | 10 |
 
+## Token Integration
+
+> Read `knowledge/networks/tokens.md` for full token registry and addresses.
+
+- **IRL** (native) — agent deployment fees, gas for agent actions
+- **tUSDI** (`0xa640d8b5c9cb3b989881b8e63b0f30179c78a04f`) — trading capital, P&L tracking in stable value
+- **WIRL** (`0x5002000000000000000000000000000000000001`) — wrapped IRL for agent contract interactions
+
+### Agent Token Patterns
+- Agent spend limits set in both IRL and tUSDI
+- Trading agents use tUSDI as base currency for P&L clarity
+- Portfolio agents track positions in tUSDI-equivalent values
+- Agent dashboard shows IRL balance (gas budget) + tUSDI balance (trading capital)
+
 ## Key Design Decisions
 - Agents run SERVERLESS (Cloudflare Workers), not containers
 - Rate limit: 10 actions/minute/agent (configurable)

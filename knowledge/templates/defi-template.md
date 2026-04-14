@@ -90,6 +90,31 @@ my-defi-dapp/
 - Slippage protection
 - LP token minting
 
+## Token Integration (Required)
+
+> Read `knowledge/networks/tokens.md` for full token registry and addresses.
+
+DeFi apps MUST support multiple tokens:
+- **IRL** (native) — gas token + primary value token for staking/lending
+- **tUSDI** (`0xa640d8b5c9cb3b989881b8e63b0f30179c78a04f`) — stablecoin for trading pairs, lending, liquidity
+- **WIRL** (`0x5002000000000000000000000000000000000001`) — wrapped IRL for contract interactions
+
+### Common Token Patterns
+- **Trading pairs**: IRL/tUSDI as primary pair
+- **Lending**: Accept both IRL and tUSDI as collateral
+- **Yield vaults**: Denominate returns in tUSDI for stability
+- **LP tokens**: Mint LP tokens for IRL/tUSDI pools
+
+### Frontend Token Display
+- Show both IRL and tUSDI balances in header
+- Token selector dropdown in deposit/swap forms
+- USD equivalent display using tUSDI as proxy
+
+### Mainnet Migration
+- Replace `tUSDI` address with real `USDI` address
+- WIRL address stays the same (precompile)
+- Update `.env` variables, no contract changes needed if addresses are configurable
+
 ## Required Integra Integrations
 - **Web3Auth**: Social login for all users
 - **XP Events**: Emit on deposit, withdraw, claim, compound

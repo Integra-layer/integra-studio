@@ -24,6 +24,10 @@ Before running this skill, verify:
 1. The `/start` skill has been run and docs/ folder exists with: PRD.md, ARCHITECTURE.md, CONTRACTS.md, FRONTEND.md, INTEGRATIONS.md
 2. The project directory has been initialized (package.json, hardhat.config.ts, next.config.ts exist)
 3. Read ALL docs in the docs/ folder to understand what needs to be built
+4. Read `knowledge/networks/tokens.md` for the token registry (IRL, tUSDI, WIRL addresses and usage)
+5. Read `knowledge/best-practices/quality-checklist.md` for the master quality checklist
+6. Read `knowledge/best-practices/design-adaptation.md` for category-specific design guidance
+7. Read `.integra/config.json` for the project's `category` and `tokens` configuration
 
 If prerequisites are missing, tell the user to run `/integra-studio:start` first.
 
@@ -53,11 +57,14 @@ NEVER skip phases. NEVER proceed without user approval.
 ## Phase 1: Smart Contracts
 
 Read docs/CONTRACTS.md for the contract specifications.
+Read `knowledge/networks/tokens.md` for token addresses to use in contracts.
 
 Build:
 - `contracts/` directory with all Solidity files specified in CONTRACTS.md
 - Each contract with full NatSpec documentation
-- `test/` directory with Hardhat tests for every contract function
+- Token integration: contracts should accept IRL (native) and tUSDI (ERC-20) as configured in `.integra/config.json`
+- Token addresses should be configurable (constructor params or admin-settable), never hardcoded
+- `test/` directory with Hardhat tests for every contract function (test with both IRL and tUSDI flows)
 - Deployment scripts in `ignition/modules/`
 
 Verification:
@@ -142,7 +149,12 @@ Read `.integra/config.json` for the branding choice. Based on the `branding` fie
 - If `"integra"`: Read `knowledge/design-systems/integra-brand.md` for official Integra design tokens (Coral #FF6D49, Euclid Circular B). Apply the official palette verbatim.
 - If `"custom"`: Read `knowledge/design-systems/custom-brand.md` for the AI-generated design system. If the file has placeholder sections, invoke the ui-ux-pro-max skill to generate the custom design system first.
 
-Also read docs/FRONTEND.md for page-level design specifications.
+Also read:
+- docs/FRONTEND.md for page-level design specifications
+- `knowledge/best-practices/design-adaptation.md` for category-specific design guidance (mood, colors, layout patterns)
+- `knowledge/best-practices/ui-ux-design.md` for component design patterns and states
+- `knowledge/best-practices/accessibility.md` for WCAG AA compliance
+- `knowledge/best-practices/onboarding-ux.md` for first-time user experience
 
 Use AskUserQuestion:
 "Applying {branding choice} design system to your UI. Confirm approach?
@@ -171,13 +183,20 @@ Run the appropriate pipeline based on branding choice:
 ### Build (both pipelines)
 
 - Apply design system colors, typography, spacing from the selected branding source
+- Apply category-specific design adaptation from `knowledge/best-practices/design-adaptation.md`
 - Loading states (skeletons, spinners) for all async operations
-- Error states with user-friendly messages and retry buttons
-- Empty states for lists and tables
+- Error states with user-friendly messages and retry buttons (see `knowledge/best-practices/onboarding-ux.md` for Web3 error mapping)
+- Empty states for lists and tables with helpful CTAs
 - Toast notifications for transaction success/failure
-- Responsive layout (mobile-first)
-- Dark theme as default
+- Token balance display: show IRL + tUSDI in header/sidebar
+- Token selector in relevant forms (deposit, swap, pay) supporting IRL and tUSDI
+- Testnet faucet link for zero-balance users
+- Network badge (testnet/mainnet) visible at all times
+- Responsive layout (mobile-first: 375px → 640px → 1024px → 1440px)
+- Dark theme as default with proper surface layering
 - Subtle animations per ui-animation skill (page transitions, hover effects, list animations)
+- WCAG AA accessibility: focus indicators, semantic HTML, ARIA labels, keyboard navigation
+- `prefers-reduced-motion` support
 
 ### Verification
 

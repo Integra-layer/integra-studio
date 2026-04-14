@@ -88,6 +88,24 @@ NFTs whose metadata changes based on on-chain events:
 - Trading history stats
 - Portfolio value indicators
 
+## Token Integration
+
+> Read `knowledge/networks/tokens.md` for full token registry and addresses.
+
+- **IRL** (native) — primary payment for minting fees and marketplace purchases
+- **tUSDI** (`0xa640d8b5c9cb3b989881b8e63b0f30179c78a04f`) — optional secondary payment method for fixed-price sales
+- **WIRL** (`0x5002000000000000000000000000000000000001`) — use when contract needs to handle IRL as ERC-20
+
+### Pricing Options
+- Mint price in IRL (native transfer) or tUSDI (ERC-20 transfer)
+- Marketplace listings can accept either token
+- Show prices in both IRL and tUSDI equivalent
+
+### Frontend Token Display
+- Show IRL balance for gas awareness
+- Show tUSDI balance if marketplace supports it
+- Floor prices displayed in IRL with tUSDI equivalent
+
 ## XP Event Map
 | Action | Points |
 |--------|--------|

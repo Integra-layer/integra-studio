@@ -60,6 +60,20 @@ my-infra-tool/
 - Lock-and-mint or burn-and-mint
 - Support Asset Passport portability
 
+## Token Integration
+
+> Read `knowledge/networks/tokens.md` for full token registry and addresses.
+
+- **IRL** (native) — gas costs, API access fees
+- **tUSDI** (`0xa640d8b5c9cb3b989881b8e63b0f30179c78a04f`) — API credit purchases, data feed subscriptions
+- **WIRL** (`0x5002000000000000000000000000000000000001`) — wrapped IRL for payment contracts
+
+### Infrastructure Token Patterns
+- Show gas costs prominently in dashboards
+- tUSDI for API credit system (if applicable)
+- Oracle feeds should include IRL and tUSDI price data
+- SDKs should expose helpers for both token types
+
 ## XP Event Map
 | Action | Points |
 |--------|--------|
