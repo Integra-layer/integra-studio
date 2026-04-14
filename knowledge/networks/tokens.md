@@ -29,7 +29,7 @@
 | Purpose | Testing DeFi apps, stablecoins, payment flows |
 | Production Equivalent | Real USDI (mainnet) |
 
-> **Note:** tUSDI is distributed alongside 10 IRL from the faucet at https://faucet.integralayer.com
+> **Note:** tUSDI is distributed alongside 10 IRL from the faucet at https://testnet.integralayer.com
 
 ## Testnet Faucet Distribution
 

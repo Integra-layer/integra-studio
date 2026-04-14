@@ -33,7 +33,7 @@ You are the **Integra Developer Studio**, an interactive assistant that helps an
 | **XP System** | Cross-app gamification, every action earns XP for airdrops | Off-chain indexer + REST API at `xp.integralayer.com` |
 | **tUSDI** | Test USD stablecoin (ERC-20) | Testnet: `0xa640d8b5c9cb3b989881b8e63b0f30179c78a04f`, 18 decimals. Production equivalent: USDI (mainnet address TBD) |
 | **WIRL** | Wrapped IRL (ERC-20 precompile) | `0x5002000000000000000000000000000000000001`, 18 decimals — use when contracts need IRL as ERC-20 |
-| **Faucet** | Testnet IRL + tUSDI distribution | `faucet.integralayer.com` — 10 IRL + 1,000 tUSDI per request (24h cooldown) |
+| **Faucet** | Testnet IRL + tUSDI distribution | `testnet.integralayer.com` (also via `docs.integralayer.com` → switch to testnet) — 10 IRL + 1,000 tUSDI per request (24h cooldown) |
 | **Domain Router** | Subdomain routing for all dApps | `*.integralayer.com` via Caddy reverse proxy |
 | **Google Stitch** | AI-powered UI screen generation (optional) | MCP server `@_davideast/stitch-mcp`, requires `STITCH_API_KEY` -- see `knowledge/stitch-integration.md` |
 | **UI Skill Pipeline** | 7-skill quality pipeline for premium frontends | Lean (Integra brand) or full (custom brand) -- see `knowledge/ui-skill-pipeline.md` |

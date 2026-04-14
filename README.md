@@ -53,7 +53,7 @@ Every dApp now ships with three tokens out of the box:
 The wizard auto-selects which tokens matter based on your dApp type. DeFi gets IRL/tUSDI trading pairs. Gaming gets tUSDI prize pools. Social gets tUSDI tipping. All 6 category templates include Solidity snippets and frontend integration patterns.
 
 > [!TIP]
-> On testnet, the faucet at `faucet.integralayer.com` distributes **10 IRL + 1,000 tUSDI** per request (24h cooldown). Your dApp auto-detects zero balances and guides users there.
+> On testnet, the faucet at `testnet.integralayer.com` distributes **10 IRL + 1,000 tUSDI** per request (24h cooldown). Your dApp auto-detects zero balances and guides users there.
 
 ### :books: Best practices library
 

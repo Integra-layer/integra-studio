@@ -40,7 +40,7 @@
 
 | Property | Value |
 |----------|-------|
-| URL | `https://faucet.integralayer.com` |
+| URL | `https://testnet.integralayer.com` (also via `https://docs.integralayer.com` → switch to testnet) |
 | Amount per request | `10 IRL + 1,000 tUSDI` |
 | Cooldown | `24 hours per address` |
 

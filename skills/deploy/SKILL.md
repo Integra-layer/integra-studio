@@ -62,7 +62,7 @@ Pre-flight Checklist:
 ```
 
 For the wallet check, if we can't verify on-chain, tell the user:
-"Make sure your deployer wallet has sufficient IRL for gas. Testnet: use the faucet at https://faucet.integralayer.com (10 IRL + 1,000 tUSDI per request, 24h cooldown). Mainnet: you need real IRL (min gas price is 5 Twei)."
+"Make sure your deployer wallet has sufficient IRL for gas. Testnet: use the faucet at https://testnet.integralayer.com (10 IRL + 1,000 tUSDI per request, 24h cooldown). Mainnet: you need real IRL (min gas price is 5 Twei)."
 
 If any check fails, show exactly what's wrong and how to fix it. Don't proceed until all checks pass.
 

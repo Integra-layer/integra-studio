@@ -657,7 +657,7 @@ Testnet token dispenser for development and testing.
 ### API
 
 ```
-Base URL: https://faucet.integralayer.com
+Base URL: https://testnet.integralayer.com
 
 POST /api/faucet/drip
 Body: { "address": "0x..." }
@@ -677,7 +677,7 @@ Response: { "lastDrip": 1711756800, "canDripAt": 1711843200, "canDrip": false }
 
 ```typescript
 // src/lib/faucet.ts
-const FAUCET_URL = "https://faucet.integralayer.com";
+const FAUCET_URL = "https://testnet.integralayer.com";
 
 export async function requestTestnetIRL(address: string): Promise<{ txHash: string }> {
   const res = await fetch(`${FAUCET_URL}/api/faucet/drip`, {

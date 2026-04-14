@@ -57,7 +57,7 @@ For testnet dApps, make getting test tokens frictionless:
 
 1. Detect zero balance on first login
 2. Show: "You need test tokens to get started. Claim free IRL + tUSDI from the faucet."
-3. Provide direct link to `https://faucet.integralayer.com`
+3. Provide direct link to `https://testnet.integralayer.com`
 4. After claiming: auto-detect balance update and dismiss the prompt
 5. Optional: embed faucet claim directly in the dApp if API allows
 
