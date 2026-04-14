@@ -313,7 +313,7 @@ integra-studio/
 |   |-- networks/                      Mainnet, testnet, tokens
 |   +-- templates/                     6 category scaffolds
 +-- docs/
-    +-- visuals/                       Napkin AI-generated diagrams
+    +-- visuals/                       Architecture and feature diagrams
 ```
 
 </details>
