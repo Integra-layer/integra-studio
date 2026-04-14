@@ -44,13 +44,11 @@ That's it. The rest is a conversation.
 
 | Feature | What changed |
 |---------|-------------|
-| **Multi-token ecosystem** | Every dApp now supports IRL (native gas) + tUSDI (stablecoin) + WIRL (wrapped). Token selection adapts per dApp category. |
-| **tUSDI stablecoin** | Testnet stablecoin at `0xa640...04f` — DeFi pairs, payments, prize pools. Auto-included in every template. |
-| **Best practices library** | 7 comprehensive guides: UI/UX design, performance, accessibility, security, onboarding, quality checklist, design adaptation. |
-| **Design adaptation by category** | DeFi gets trust-blue data-dense layouts. Gaming gets energy-purple bold animations. NFT gets gallery minimalism. Each choice explained with design psychology. |
-| **Quality checklist** | Master checklist with A-F grading. Used by `/build`, `/review`, and audits. Covers contracts, frontend, tokens, accessibility, performance. |
-| **Enhanced review** | `/review` now checks token compliance, WCAG AA accessibility, design-category fit, onboarding UX, and Core Web Vitals. |
-| **Onboarding UX** | Zero-balance detection, faucet guidance, progressive disclosure, Web3 error → friendly message mapping. |
+| **Multi-token ecosystem** | dApps now support IRL (native gas) + tUSDI (ERC-20 stablecoin, `0xa640...04f`) + WIRL (wrapped IRL). The wizard auto-selects which tokens matter based on your dApp type — DeFi gets IRL/tUSDI trading pairs, gaming gets tUSDI prize pools, social gets tUSDI tipping. All 6 templates include token integration patterns and Solidity snippets. |
+| **Best practices library** | 7 guides in `knowledge/best-practices/` that every skill now reads during build and review. Covers UI/UX component patterns, frontend performance (Core Web Vitals targets, bundle budgets), WCAG AA accessibility (contrast ratios, keyboard nav, ARIA), frontend security (XSS, Stitch safety, transaction confirmation), onboarding UX (zero-balance flows, Web3 error mapping), and a master quality checklist with A-F project grading. |
+| **Design adaptation by category** | Each dApp category gets design guidance rooted in color psychology. DeFi → cool tones + data-dense dashboards (trust). Gaming → vibrant accents + energetic animations (excitement). NFT → neutral surfaces + generous whitespace (gallery). Social → warm tones + feed layouts (community). AI Agents → dark surfaces + monospace data (futuristic). Includes Integra brand adaptation notes per category. |
+| **Enhanced `/review`** | The review skill now runs 6 checks instead of 4: contract security, frontend quality, Integra compliance, **token integration** (correct addresses, configurable not hardcoded), **UI/UX quality** (accessibility, design-category fit, onboarding), and **performance** (bundle size, LCP, CLS). Report format includes token and UI/UX scoring. |
+| **Smarter `/start` wizard** | Blueprint now includes token selection rationale and design adaptation notes. Project config (`config.json`) stores `category` and `tokens` fields so downstream skills know which tokens and design mood to apply. |
 
 ### Previous (V2)
 
