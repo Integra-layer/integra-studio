@@ -52,7 +52,7 @@ That's it. The wizard takes it from there.
 ## :eyes: How it works
 
 <div align="center">
-<img src="docs/visuals/workflow.svg" alt="Integra Developer Studio Workflow" width="700" />
+<img src="docs/visuals/workflow.png" alt="Integra Developer Studio Workflow" width="800" />
 </div>
 
 <br />
@@ -108,7 +108,7 @@ The studio runs a **conversation-driven pipeline**:
 ## :coin: Token ecosystem
 
 <div align="center">
-<img src="docs/visuals/tokens.svg" alt="Integra Token Ecosystem" width="700" />
+<img src="docs/visuals/tokens.png" alt="Integra Token Ecosystem" width="800" />
 </div>
 
 <br />
@@ -143,7 +143,7 @@ Every dApp ships with three tokens. The wizard auto-selects which ones matter ba
 ## :busts_in_silhouette: Eight agents, one team
 
 <div align="center">
-<img src="docs/visuals/agents.svg" alt="Eight AI Agents" width="700" />
+<img src="docs/visuals/agents.png" alt="Eight AI Agents" width="800" />
 </div>
 
 <br />
@@ -167,7 +167,7 @@ Every dApp ships with three tokens. The wizard auto-selects which ones matter ba
 ## :performing_arts: Design adaptation
 
 <div align="center">
-<img src="docs/visuals/design-adaptation.svg" alt="Design Adaptation by Category" width="700" />
+<img src="docs/visuals/design-adaptation.png" alt="Design Adaptation by Category" width="800" />
 </div>
 
 <br />
@@ -191,7 +191,7 @@ The studio doesn't just build — it **designs with intent**. Each dApp category
 ## :white_check_mark: Quality review
 
 <div align="center">
-<img src="docs/visuals/review-checklist.svg" alt="Six-Check Quality Review" width="700" />
+<img src="docs/visuals/review-checklist.png" alt="Six-Check Quality Review" width="800" />
 </div>
 
 <br />
